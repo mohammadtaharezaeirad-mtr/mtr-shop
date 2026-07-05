@@ -1,6 +1,7 @@
 from flask import Flask,render_template,request,session,redirect,abort
 import config
 import pymysql
+import pymysql
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = config.SECRET_KEY
