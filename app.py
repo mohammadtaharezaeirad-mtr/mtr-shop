@@ -8,6 +8,7 @@ app.config["SECRET_KEY"] = config.SECRET_KEY
 
 
 
+
 # ___________________start database products___________________ #
 def database():
     conn = pymysql.connect(
@@ -18,7 +19,7 @@ def database():
     cursor = conn.cursor()
 
     cursor.execute("CREATE SCHEMA IF NOT EXISTS `mtr_shop`")
-    cursor.execute("CREATE TABLE `mtr shop`.`products` (\
+    cursor.execute("CREATE TABLE IF NOT EXISTS `mtr shop`.`products` (\
   `id` INT NOT NULL AUTO_INCREMENT,\
   `name` VARCHAR(200) NOT NULL,\
   `prce` INT NULL,\
@@ -41,7 +42,7 @@ database()
 # ___________________start route home or page home___________________ #
 @app.route("/")
 def home():
-    return render_template("home.html")
+    return render_template("home.html" , namepage = config.namepagehome)
 
 
 # ___________________end route home or page home___________________ #
@@ -70,12 +71,34 @@ def admin_login():
 
 
 
+
+
 # ___________________start route /admin/dashboard or page dashboard admin___________________ #
 @app.route("/admin/dashboard", methods=["GET"])
 def dashboard():
     if session.get("admin_login", None) == None:
         abort(403)
+    else:
+        return render_template('dashboard.html')
 # ___________________end route /admin/dashboard or page dashboard admin___________________ #
+
+
+
+
+
+
+
+# ___________________start route /admin/dashboard/products or page productsadmin___________________ #
+@app.route("/admin/dashboard/products", methods=["GET"])
+def products():
+    if session.get("admin_login", None) == None:
+        abort(403)
+    else:
+        return render_template('products.html')
+# ___________________end route /admin/dashboard/products or page productsadmin___________________ #
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
