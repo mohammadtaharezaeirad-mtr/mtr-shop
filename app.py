@@ -1,8 +1,32 @@
 from flask import Flask,render_template,request,session,redirect,abort
 import config
+import pymysql
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = config.SECRET_KEY
+
+
+def database():
+    conn = pymysql.connect(
+        host="127.0.0.1",
+        user="root",
+        password="root",  
+        )
+    cursor = conn.cursor()
+    
+    
+    cursor.execute("CREATE SCHEMA IF NOT EXISTS `mtr shop`")
+    cursor.execute("CREATE TABLE IF NOT EXISTS`mtr_shop`.`login_user` (\
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,\
+  `username` VARCHAR(200) NOT NULL,\
+  `password` VARCHAR(45) NOT NULL,\
+  PRIMARY KEY (`id`),\
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,\
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE,\
+  UNIQUE INDEX `password_UNIQUE` (`password` ASC) VISIBLE);")
+    conn.commit()
+    
+
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -28,4 +52,5 @@ def dashboard():
 
 if __name__ == '__main__':
     app.run(debug = True)
+    database()
     
