@@ -42,7 +42,7 @@ database()
 # ___________________start route home or page home___________________ #
 @app.route("/")
 def home():
-    return render_template("home.html" , namepage = config.namepagehome)
+    return render_template("home.html" , namepage = config.name_page_home)
 
 
 # ___________________end route home or page home___________________ #
@@ -65,7 +65,7 @@ def admin_login():
             return redirect("/admin/dashboard")
         else:
             return redirect("/admin/login")
-    return render_template("admin_login.html")
+    return render_template("admin_login.html", namepage = config.name_page_admin_login)
 # ___________________end route /admin/login or page admin login___________________ #
 
 
@@ -79,7 +79,7 @@ def dashboard():
     if session.get("admin_login", None) == None:
         abort(403)
     else:
-        return render_template('dashboard.html')
+        return render_template('dashboard.html' , namepage = config.name_page_dashboard)
 # ___________________end route /admin/dashboard or page dashboard admin___________________ #
 
 
@@ -94,7 +94,7 @@ def products():
     if session.get("admin_login", None) == None:
         abort(403)
     else:
-        return render_template('products.html')
+        return render_template('products.html' , namepage = config.name_page_products)
 # ___________________end route /admin/dashboard/products or page productsadmin___________________ #
 
 
