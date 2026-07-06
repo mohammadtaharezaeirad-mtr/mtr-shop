@@ -19,13 +19,12 @@ def database():
     cursor = conn.cursor()
 
     cursor.execute("CREATE SCHEMA IF NOT EXISTS `mtr_shop`")
-    cursor.execute("CREATE TABLE IF NOT EXISTS `mtr shop`.`products` (\
+    cursor.execute("CREATE TABLE IF NOT EXISTS `mtr_shop`.`products` (\
   `id` INT NOT NULL AUTO_INCREMENT,\
   `name` VARCHAR(200) NOT NULL,\
   `prce` INT NULL,\
   `description` TEXT NULL,\
-  `active` INT NULL,\
-  `productscol` VARCHAR(45) NULL,\
+  `active` VARCHAR(5) NULL,\
   PRIMARY KEY (`id`),\
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);")
     conn.commit()
@@ -89,12 +88,33 @@ def dashboard():
 
 
 # ___________________start route /admin/dashboard/products or page productsadmin___________________ #
-@app.route("/admin/dashboard/products", methods=["GET"])
-def products():
+@app.route("/admin/dashboard/products", methods=["GET","POST"])
+def products():    
     if session.get("admin_login", None) == None:
         abort(403)
     else:
-        return render_template('products.html' , namepage = config.name_page_products)
+        conn = pymysql.connect(
+        host="127.0.0.1",
+        user="root",
+        password="root"
+        )
+        cursor = conn.cursor()
+    
+        if request.method == 'POST':
+            name  = request.form.get('name')
+            prce  = request.form.get('prce')
+            description  = request.form.get('description')
+            active  = request.form.get('active')
+
+
+            sql_insert = "INSERT INTO `mtr_shop`.`products` (`name`, `prce`, `description`, `active`) VALUES (%s, %s, %s, %s);"
+            cursor.execute(sql_insert , (name  , prce , description , active))
+            conn.commit()
+            
+        sql_select = "SELECT * FROM mtr_shop.products;"
+        cursor.execute(sql_select)
+        all_products = cursor.fetchall()
+        return render_template('products.html' , namepage = config.name_page_products , all_products = all_products)
 # ___________________end route /admin/dashboard/products or page productsadmin___________________ #
 
 
