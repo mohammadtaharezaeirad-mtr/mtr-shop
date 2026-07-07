@@ -31,6 +31,15 @@ def database():
 
 
 database()
+
+
+def connection_db():
+        return pymysql.connect(
+        host="127.0.0.1",
+        user="root",
+        password="root"
+        )
+    
 # ___________________end database products___________________ #
 
 
@@ -93,11 +102,7 @@ def products():
     if session.get("admin_login", None) == None:
         abort(403)
     else:
-        conn = pymysql.connect(
-        host="127.0.0.1",
-        user="root",
-        password="root"
-        )
+        conn = connection_db()
         cursor = conn.cursor()
     
         if request.method == 'POST':
@@ -127,12 +132,7 @@ def products():
 def edit_products(id):
     if session.get("admin_login", None) == None:
         abort(403) 
-    conn = pymysql.connect(
-    host="127.0.0.1",
-    user="root",
-    password="root",
-    database="mtr_shop"
-    )
+    conn = connection_db()
     cursor = conn.cursor()
     sql_insert = "SELECT * FROM mtr_shop.products where id = %s;"
     cursor.execute(sql_insert , id)
@@ -163,12 +163,7 @@ def edit_products(id):
 def delete_products(id):
     if session.get("admin_login", None) == None:
         abort(403) 
-    conn = pymysql.connect(
-    host="127.0.0.1",
-    user="root",
-    password="root",
-    database="mtr_shop"
-    )
+    conn = connection_db()
     cursor = conn.cursor()
     if request.method == 'GET':
         sql_delete = "DELETE FROM `mtr_shop`.`products` WHERE (`id` = %s );"
