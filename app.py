@@ -154,7 +154,7 @@ def edit_products(id):
         cursor.execute(sql_update2,(description,id)) 
         cursor.execute(sql_update3,(active ,id)) 
         conn.commit()
-    return render_template('admin/edit-products.html' , one_products = one_products)
+    return render_template('admin/edit-products.html' , one_products = one_products , namepage = config.name_page_editproducts)
 # __________________end route /admin/dashboard/edit-products/<id> or page edit product___________________ #
 
 
