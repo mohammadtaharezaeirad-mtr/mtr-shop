@@ -6,7 +6,10 @@
     <title>{{namepage}}</title>
 </head>
 <body>
-        <form action="{{edit_products}}" method="post">
+    
+        <img src="/static/imagesProducts/{{one_products[0]}}.jpg" alt="">
+
+        <form action="{{edit_products}}" method="post" enctype="multipart/form-data" >
         <label for="">نام محصول</label> <br>
         <input type="text" name="name" placeholder="نام محصول" value="{{one_products[1]}}"> <br>
 
@@ -17,7 +20,9 @@
         <textarea name="description"  placeholder="توضیح محصول">{{one_products[3]}}</textarea> <br>
 
         <label for="">موجودی محصول</label> <br>
-        <input type="checkbox" name="active" value="someValue" {% if one_products[4] == 'on' %} checked {% endif %}> <br>
+        <input type="checkbox" name="active" {% if one_products[4] == 'on' %} checked {% endif %}> <br>
+
+        <input type="file" name="image" id="">
 
         <button type="submit">تایید</button>
         </form>

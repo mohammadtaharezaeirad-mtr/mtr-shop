@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, session, redirect, abort
 import config
 import pymysql
+import os
 
 app = Flask(__name__)
 
@@ -146,6 +147,7 @@ def edit_products(id):
         prce = request.form.get('prce')
         description = request.form.get('description')
         active = request.form.get('active')
+        image = request.files.get('image')
         if active == None:
             active = 'off'
         sql_update = "UPDATE `mtr_shop`.`products` SET `name` = %s WHERE (`id` = %s );"
@@ -157,6 +159,8 @@ def edit_products(id):
         cursor.execute(sql_update2,(description,id)) 
         cursor.execute(sql_update3,(active ,id)) 
         conn.commit()
+        if image and image.filename != '':
+            image.save(f'./static/imagesProducts/{one_products[0]}.jpg')
     return render_template('admin/edit-products.html' , one_products = one_products , namepage = config.name_page_editproducts)
 # __________________end route /admin/dashboard/edit-products/<id> or page edit product___________________ #
 
@@ -169,6 +173,9 @@ def delete_products(id):
     conn = connection_db()
     cursor = conn.cursor()
     if request.method == 'GET':
+        image_filename = f"{id}.jpg"
+        image_path = os.path.join('static', 'imagesProducts', image_filename)
+        os.remove(image_path)
         sql_delete = "DELETE FROM `mtr_shop`.`products` WHERE (`id` = %s );"
         cursor.execute(sql_delete,(id)) 
         conn.commit()
