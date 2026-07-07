@@ -36,6 +36,8 @@
             <th>توضیحات محصول</th>
             <th>قیمت محصول</th>
             <th>فعال</th>
+            <th>ویرایش</th>
+            <th>حذف</th>
         </tr>
     {%for i in all_products%}
     <tr>
@@ -43,6 +45,8 @@
         <td>{{i[2]}}</td>
         <td>{{i[3]}}</td>
         <td>{{'فعال' if i[4] == 'on' else 'غیرفعال'}}</td>
+        <td><a href="/admin/dashboard/edit-products/{{i[0]}}">ویرایش</a></td>
+        <td><a href="/admin/dashboard/delete-products/{{i[0]}}">پاک کردن</a></td>
     </tr>
     {%endfor%}
     </table>
