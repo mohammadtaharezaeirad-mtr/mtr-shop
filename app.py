@@ -87,7 +87,7 @@ def dashboard():
 
 
 
-# ___________________start route /admin/dashboard/products or page productsadmin___________________ #
+# ___________________start route /admin/dashboard/products or page products admin___________________ #
 @app.route("/admin/dashboard/products", methods=["GET","POST"])
 def products():    
     if session.get("admin_login", None) == None:
@@ -105,8 +105,8 @@ def products():
             prce  = request.form.get('prce')
             description  = request.form.get('description')
             active  = request.form.get('active')
-
-
+            if active == None:
+                active = 'off'
             sql_insert = "INSERT INTO `mtr_shop`.`products` (`name`, `prce`, `description`, `active`) VALUES (%s, %s, %s, %s);"
             cursor.execute(sql_insert , (name  , prce , description , active))
             conn.commit()
@@ -115,9 +115,47 @@ def products():
         cursor.execute(sql_select)
         all_products = cursor.fetchall()
         return render_template('products.html' , namepage = config.name_page_products , all_products = all_products)
-# ___________________end route /admin/dashboard/products or page productsadmin___________________ #
+# ___________________end route /admin/dashboard/products or page products admin___________________ #
 
 
+
+
+
+# ___________________start route /admin/dashboard/edit-products/<id> or page edit product___________________ #
+
+@app.route("/admin/dashboard/edit-products/<id>", methods=["GET","POST"])
+def edit_products(id):
+    if session.get("admin_login", None) == None:
+        abort(403) 
+    conn = pymysql.connect(
+    host="127.0.0.1",
+    user="root",
+    password="root",
+    database="mtr_shop"
+    )
+    cursor = conn.cursor()
+    sql_insert = "SELECT * FROM mtr_shop.products where id = %s;"
+    cursor.execute(sql_insert , id)
+    one_products = cursor.fetchone()
+    conn.commit()
+    if request.method == 'POST':
+        name = request.form.get('name')
+        prce = request.form.get('prce')
+        description = request.form.get('description')
+        active = request.form.get('active')
+        if active == None:
+            active = 'off'
+        sql_update = "UPDATE `mtr_shop`.`products` SET `name` = %s WHERE (`id` = %s );"
+        sql_update1 = "UPDATE `mtr_shop`.`products` SET `prce` = %s WHERE (`id` = %s );"
+        sql_update2 = "UPDATE `mtr_shop`.`products` SET `description` = %s WHERE (`id` = %s );"
+        sql_update3 = "UPDATE `mtr_shop`.`products` SET `active` = %s WHERE (`id` = %s );"
+        cursor.execute(sql_update,(name,id)) 
+        cursor.execute(sql_update1,(prce,id)) 
+        cursor.execute(sql_update2,(description,id)) 
+        cursor.execute(sql_update3,(active ,id)) 
+        conn.commit()
+    return render_template('edit-products.html' , one_products = one_products)
+# __________________end route /admin/dashboard/edit-products/<id> or page edit product___________________ #
 
 
 if __name__ == "__main__":
