@@ -110,15 +110,18 @@ def products():
             prce  = request.form.get('prce')
             description  = request.form.get('description')
             active  = request.form.get('active')
+            image = request.files.get('image')
             if active == None:
                 active = 'off'
             sql_insert = "INSERT INTO `mtr_shop`.`products` (`name`, `prce`, `description`, `active`) VALUES (%s, %s, %s, %s);"
             cursor.execute(sql_insert , (name  , prce , description , active))
             conn.commit()
-            
+            product_id = cursor.lastrowid
+            image.save(f'./static/imagesProducts/{product_id}.jpg')
         sql_select = "SELECT * FROM mtr_shop.products;"
         cursor.execute(sql_select)
         all_products = cursor.fetchall()
+        
         return render_template('admin/products.html' , namepage = config.name_page_products , all_products = all_products)
 # ___________________end route /admin/dashboard/products or page products admin___________________ #
 
@@ -159,7 +162,7 @@ def edit_products(id):
 
 
 # ___________________start route /admin/dashboard/delete-products/<id> or page delete product___________________ #
-@app.route("/admin/dashboard/delete-products/<id>", methods=["GET","POST"])
+@app.route("/admin/dashboard/delete-products/<int:id>", methods=["GET","POST"])
 def delete_products(id):
     if session.get("admin_login", None) == None:
         abort(403) 

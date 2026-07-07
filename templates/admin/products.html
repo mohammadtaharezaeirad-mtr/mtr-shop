@@ -7,7 +7,7 @@
 </head>
 <body>
     <!------------------=== start form peoducts ===------------------>
-    <form action="{{products}}" method="post">
+    <form action="{{products}}" method="post" enctype="multipart/form-data">
         <label for="">نام محصول</label> <br>
         <input type="text" name="name" placeholder="نام محصول"> <br>
 
@@ -19,12 +19,13 @@
 
         <label for="">موجودی محصول</label> <br>
         <input type="checkbox" name="active"> <br>
-
+        <label for="">افزودن تصویر</label> <br>
+        <input type="file" name="image" accept=".jpg,.png,.jpe,.svgz,.apng" id=""> <br> <br>
         <button type="submit">تایید</button>
     </form>
 
 
-        <!------------------=== end form peoducts ===------------------>
+    <!------------------=== end form peoducts ===------------------>
 
 
 
@@ -38,6 +39,7 @@
             <th>فعال</th>
             <th>ویرایش</th>
             <th>حذف</th>
+            <th>تصویر محصول</th>
         </tr>
     {%for i in all_products%}
     <tr>
@@ -47,6 +49,7 @@
         <td>{{'فعال' if i[4] == 'on' else 'غیرفعال'}}</td>
         <td><a href="/admin/dashboard/edit-products/{{i[0]}}">ویرایش</a></td>
         <td><a href="/admin/dashboard/delete-products/{{i[0]}}">پاک کردن</a></td>
+        <td><img src="/static/imagesProducts/{{i[0]}}.jpg" alt="ff"></td>
     </tr>
     {%endfor%}
     </table>
