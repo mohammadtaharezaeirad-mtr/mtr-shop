@@ -8,16 +8,16 @@
 <body>
         <form action="{{edit_products}}" method="post">
         <label for="">نام محصول</label> <br>
-        <input type="text" name="name" placeholder="نام محصول" value=""> <br>
+        <input type="text" name="name" placeholder="نام محصول" value="{{one_products[1]}}"> <br>
 
         <label for="">قیمت محصول</label> <br>
-        <input type="text" name="prce" placeholder="قیمت محصول"> <br>
+        <input type="text" name="prce" placeholder="قیمت محصول" value="{{one_products[2]}}"> <br>
 
         <label for="">توضیحات محصول</label> <br>
-        <textarea name="description"  placeholder="توضیح محصول"> </textarea> <br>
+        <textarea name="description"  placeholder="توضیح محصول">{{one_products[3]}}</textarea> <br>
 
         <label for="">موجودی محصول</label> <br>
-        <input type="checkbox" name="active"> <br>
+        <input type="checkbox" name="active" value="someValue" {% if one_products[4] == 'on' %} checked {% endif %}> <br>
 
         <button type="submit">تایید</button>
         </form>
