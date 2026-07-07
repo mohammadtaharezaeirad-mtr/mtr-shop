@@ -64,7 +64,7 @@ def admin_login():
             return redirect("/admin/dashboard")
         else:
             return redirect("/admin/login")
-    return render_template("admin_login.html", namepage = config.name_page_admin_login)
+    return render_template("admin/admin_login.html", namepage = config.name_page_admin_login)
 # ___________________end route /admin/login or page admin login___________________ #
 
 
@@ -78,7 +78,7 @@ def dashboard():
     if session.get("admin_login", None) == None:
         abort(403)
     else:
-        return render_template('dashboard.html' , namepage = config.name_page_dashboard)
+        return render_template('admin/dashboard.html' , namepage = config.name_page_dashboard)
 # ___________________end route /admin/dashboard or page dashboard admin___________________ #
 
 
@@ -114,7 +114,7 @@ def products():
         sql_select = "SELECT * FROM mtr_shop.products;"
         cursor.execute(sql_select)
         all_products = cursor.fetchall()
-        return render_template('products.html' , namepage = config.name_page_products , all_products = all_products)
+        return render_template('admin/products.html' , namepage = config.name_page_products , all_products = all_products)
 # ___________________end route /admin/dashboard/products or page products admin___________________ #
 
 
@@ -154,8 +154,28 @@ def edit_products(id):
         cursor.execute(sql_update2,(description,id)) 
         cursor.execute(sql_update3,(active ,id)) 
         conn.commit()
-    return render_template('edit-products.html' , one_products = one_products)
+    return render_template('admin/edit-products.html' , one_products = one_products)
 # __________________end route /admin/dashboard/edit-products/<id> or page edit product___________________ #
+
+
+# ___________________start route /admin/dashboard/delete-products/<id> or page delete product___________________ #
+@app.route("/admin/dashboard/delete-products/<id>", methods=["GET","POST"])
+def delete_products(id):
+    if session.get("admin_login", None) == None:
+        abort(403) 
+    conn = pymysql.connect(
+    host="127.0.0.1",
+    user="root",
+    password="root",
+    database="mtr_shop"
+    )
+    cursor = conn.cursor()
+    if request.method == 'GET':
+        sql_delete = "DELETE FROM `mtr_shop`.`products` WHERE (`id` = %s );"
+        cursor.execute(sql_delete,(id)) 
+        conn.commit()
+    return redirect('/admin/dashboard/products')
+# ___________________end route /admin/dashboard/delete-products/<id> or page delete product___________________ #
 
 
 if __name__ == "__main__":
