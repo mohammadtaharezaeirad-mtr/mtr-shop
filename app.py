@@ -40,7 +40,7 @@ def users():
         password="root",
     )
     cursor = conn.cursor()
-    cursor.execute("CREATE TABLE `mtr_shop`.`users` (\
+    cursor.execute("CREATE TABLE IF NOT EXISTS`mtr_shop`.`users` (\
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,\
   `username` VARCHAR(200) NOT NULL,\
   `password` VARCHAR(200) NOT NULL,\
@@ -72,7 +72,7 @@ def connection_db():
         password="root"
         )
 
-
+# ______________________________________________✔✔start code admin✔✔______________________________________________ #
 
 
 
@@ -218,6 +218,24 @@ def delete_products(id):
         conn.commit()
     return redirect('/admin/dashboard/admin-products')
 # ___________________end route /admin/dashboard/delete-products/... or page delete product___________________ #
+
+
+
+
+# ______________________________________________✔✔end code admin✔✔______________________________________________ #
+
+
+
+####################################################################################################################
+####################################################################################################################
+####################################################################################################################
+
+
+
+
+# ______________________________________________✔✔start code users✔✔______________________________________________ #
+
+
 
 
 if __name__ == "__main__":
