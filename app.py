@@ -45,7 +45,7 @@ def users():
   `username` VARCHAR(200) NOT NULL,\
   `password` VARCHAR(200) NOT NULL,\
   `phone` VARCHAR(50) NOT NULL,\
-  `aderees` VARCHAR(600) NULL,\
+  `address` VARCHAR(600) NULL,\
   PRIMARY KEY (`id`),\
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,\
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE);")
@@ -236,7 +236,28 @@ def delete_products(id):
 # ______________________________________________✔✔start code users✔✔______________________________________________ #
 
 
+@app.route('/sign-up' , methods = ["GET" , "POST"])
+def sign_up():
 
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        phone = request.form.get('phone')
+        address = request.form.get('address')
+        
+        conn = connection_db()
+        cursor = conn.cursor()
+        sql_insert = "INSERT INTO `mtr_shop`.`users` (`username`, `password`, `phone`, `address`) VALUES (%s,%s,%s,%s);"
+        cursor.execute(sql_insert , (username, password, phone, address))
+        conn.commit()
+    
+    
+    return render_template('users/sign_up.html', namepage = config.name_page_sign_up)
+
+@app.route('/log-in')
+def login():
+
+    return render_template('users/login.html', namepage = config.name_page_login)
 
 if __name__ == "__main__":
     app.run(debug=True)
