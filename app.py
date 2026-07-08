@@ -50,14 +50,18 @@ def users():
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,\
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE);")
     conn.commit()
-
 # ___________________end database users___________________ #
 
+        
+        
+        
         
 #__ create database__ # 
 products()
 users()
 #__ create database__ #   
+
+
 
 
 
@@ -86,7 +90,7 @@ def home():
 # ___________________end route home or page home___________________ #
 
 
-
+# ___________________start route /products/... or page products___________________ #
 @app.route("/products/<int:id>/<name>")
 def products(id, name):
     conn = connection_db()
@@ -163,7 +167,7 @@ def admin_products():
 
 
 
-# ___________________start route /admin/dashboard/edit-products/<id> or page edit product___________________ #
+# ___________________start route /admin/dashboard/edit-products/... or page edit product___________________ #
 
 @app.route("/admin/dashboard/edit-products/<int:id>", methods=["GET","POST"])
 def edit_products(id):
@@ -195,10 +199,10 @@ def edit_products(id):
         if image and image.filename != '':
             image.save(f'./static/imagesProducts/{one_products[0]}.jpg')
     return render_template('admin/edit-products.html' , one_products = one_products , namepage = config.name_page_editproducts)
-# __________________end route /admin/dashboard/edit-products/<id> or page edit product___________________ #
+# __________________end route /admin/dashboard/edit-products/... or page edit product___________________ #
 
 
-# ___________________start route /admin/dashboard/delete-products/<id> or page delete product___________________ #
+# ___________________start route /admin/dashboard/delete-products/... or page delete product___________________ #
 @app.route("/admin/dashboard/delete-products/<int:id>", methods=["GET","POST"])
 def delete_products(id):
     if session.get("admin_login", None) == None:
@@ -213,7 +217,7 @@ def delete_products(id):
         cursor.execute(sql_delete,(id)) 
         conn.commit()
     return redirect('/admin/dashboard/admin-products')
-# ___________________end route /admin/dashboard/delete-products/<id> or page delete product___________________ #
+# ___________________end route /admin/dashboard/delete-products/... or page delete product___________________ #
 
 
 if __name__ == "__main__":
