@@ -11,7 +11,7 @@ app.config["SECRET_KEY"] = config.SECRET_KEY
 
 
 # ___________________start database products___________________ #
-def database():
+def products():
     conn = pymysql.connect(
         host="127.0.0.1",
         user="root",
@@ -29,9 +29,36 @@ def database():
   PRIMARY KEY (`id`),\
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);")
     conn.commit()
+# ___________________end database products___________________ #
 
 
-database()
+# ___________________start database users___________________ #
+def users():
+    conn = pymysql.connect(
+        host="127.0.0.1",
+        user="root",
+        password="root",
+    )
+    cursor = conn.cursor()
+    cursor.execute("CREATE TABLE `mtr_shop`.`users` (\
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,\
+  `username` VARCHAR(200) NOT NULL,\
+  `password` VARCHAR(200) NOT NULL,\
+  `phone` VARCHAR(50) NOT NULL,\
+  `aderees` VARCHAR(600) NULL,\
+  PRIMARY KEY (`id`),\
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,\
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE);")
+    conn.commit()
+
+# ___________________end database users___________________ #
+
+        
+#__ create database__ # 
+products()
+users()
+#__ create database__ #   
+
 
 
 def connection_db():
@@ -40,9 +67,6 @@ def connection_db():
         user="root",
         password="root"
         )
-    
-# ___________________end database products___________________ #
-
 
 
 
