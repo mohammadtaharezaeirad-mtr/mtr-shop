@@ -51,15 +51,26 @@ def connection_db():
 # ___________________start route home or page home___________________ #
 @app.route("/")
 def home():
-    return render_template("home.html" , namepage = config.name_page_home)
+    conn = connection_db()
+    cursor = conn.cursor()
+    sql_insert = "SELECT * FROM mtr_shop.products WHERE active = 'on';"
+    cursor.execute(sql_insert)
+    all_products = cursor.fetchall()
+    return render_template("home.html" , namepage = config.name_page_home , all_products = all_products)
 
 
 # ___________________end route home or page home___________________ #
 
 
 
-
-
+@app.route("/products/<int:id>/<name>")
+def products(id, name):
+    conn = connection_db()
+    cursor = conn.cursor()
+    sql_insert = "SELECT * FROM mtr_shop.products WHERE id = %s and name = %s;"
+    cursor.execute(sql_insert,(id , name))
+    one_products = cursor.fetchone()
+    return render_template('view_products.html' , one_products = one_products)
 
 
 
@@ -87,8 +98,7 @@ def admin_login():
 def dashboard():
     if session.get("admin_login", None) == None:
         abort(403)
-    else:
-        return render_template('admin/dashboard.html' , namepage = config.name_page_dashboard)
+    return render_template('admin/dashboard.html' , namepage = config.name_page_dashboard)
 # ___________________end route /admin/dashboard or page dashboard admin___________________ #
 
 
@@ -98,32 +108,31 @@ def dashboard():
 
 
 # ___________________start route /admin/dashboard/products or page products admin___________________ #
-@app.route("/admin/dashboard/products", methods=["GET","POST"])
-def products():    
+@app.route("/admin/dashboard/admin-products", methods=["GET","POST"])
+def admin_products():    
     if session.get("admin_login", None) == None:
         abort(403)
-    else:
-        conn = connection_db()
-        cursor = conn.cursor()
+    conn = connection_db()
+    cursor = conn.cursor()
     
-        if request.method == 'POST':
-            name  = request.form.get('name')
-            prce  = request.form.get('prce')
-            description  = request.form.get('description')
-            active  = request.form.get('active')
-            image = request.files.get('image')
-            if active == None:
-                active = 'off'
-            sql_insert = "INSERT INTO `mtr_shop`.`products` (`name`, `prce`, `description`, `active`) VALUES (%s, %s, %s, %s);"
-            cursor.execute(sql_insert , (name  , prce , description , active))
-            conn.commit()
-            product_id = cursor.lastrowid
-            image.save(f'./static/imagesProducts/{product_id}.jpg')
-        sql_select = "SELECT * FROM mtr_shop.products;"
-        cursor.execute(sql_select)
-        all_products = cursor.fetchall()
+    if request.method == 'POST':
+        name  = request.form.get('name')
+        prce  = request.form.get('prce')
+        description  = request.form.get('description')
+        active  = request.form.get('active')
+        image = request.files.get('image')
+        if active == None:
+            active = 'off'
+        sql_insert = "INSERT INTO `mtr_shop`.`products` (`name`, `prce`, `description`, `active`) VALUES (%s, %s, %s, %s);"
+        cursor.execute(sql_insert , (name  , prce , description , active))
+        conn.commit()
+        product_id = cursor.lastrowid
+        image.save(f'./static/imagesProducts/{product_id}.jpg')
+    sql_select = "SELECT * FROM mtr_shop.products;"
+    cursor.execute(sql_select)
+    all_products = cursor.fetchall()
         
-        return render_template('admin/products.html' , namepage = config.name_page_products , all_products = all_products)
+    return render_template('admin/products.html' , namepage = config.name_page_products , all_products = all_products)
 # ___________________end route /admin/dashboard/products or page products admin___________________ #
 
 
@@ -132,7 +141,7 @@ def products():
 
 # ___________________start route /admin/dashboard/edit-products/<id> or page edit product___________________ #
 
-@app.route("/admin/dashboard/edit-products/<id>", methods=["GET","POST"])
+@app.route("/admin/dashboard/edit-products/<int:id>", methods=["GET","POST"])
 def edit_products(id):
     if session.get("admin_login", None) == None:
         abort(403) 
