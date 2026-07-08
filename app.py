@@ -187,14 +187,8 @@ def edit_products(id):
         image = request.files.get('image')
         if active == None:
             active = 'off'
-        sql_update = "UPDATE `mtr_shop`.`products` SET `name` = %s WHERE (`id` = %s );"
-        sql_update1 = "UPDATE `mtr_shop`.`products` SET `prce` = %s WHERE (`id` = %s );"
-        sql_update2 = "UPDATE `mtr_shop`.`products` SET `description` = %s WHERE (`id` = %s );"
-        sql_update3 = "UPDATE `mtr_shop`.`products` SET `active` = %s WHERE (`id` = %s );"
-        cursor.execute(sql_update,(name,id)) 
-        cursor.execute(sql_update1,(prce,id)) 
-        cursor.execute(sql_update2,(description,id)) 
-        cursor.execute(sql_update3,(active ,id)) 
+        sql_update = "UPDATE `mtr_shop`.`products` SET `name` = %s ,`prce` = %s , `description` = %s , `active` = %s WHERE (`id` = %s );"
+        cursor.execute(sql_update,(name,prce,description,active,id)) 
         conn.commit()
         if image and image.filename != '':
             image.save(f'./static/imagesProducts/{one_products[0]}.jpg')
