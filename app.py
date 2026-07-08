@@ -188,7 +188,7 @@ def delete_products(id):
         sql_delete = "DELETE FROM `mtr_shop`.`products` WHERE (`id` = %s );"
         cursor.execute(sql_delete,(id)) 
         conn.commit()
-    return redirect('/admin/dashboard/products')
+    return redirect('/admin/dashboard/admin-products')
 # ___________________end route /admin/dashboard/delete-products/<id> or page delete product___________________ #
 
 
