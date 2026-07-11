@@ -270,6 +270,8 @@ def login():
         one_user = cursor.fetchone()
         if one_user == None:
             return render_template('users/login.html' , error = 'نام کاربری یا پسورد یا درست وارد کند' , namepage = config.name_page_login)
+        session["user_id"] = one_user[0]
+        print(session.get('user_id'))
     return render_template('users/login.html', namepage = config.name_page_login)
 # ___________________end route /log-in or page log in user___________________ #
 
