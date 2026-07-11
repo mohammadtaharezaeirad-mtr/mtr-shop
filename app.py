@@ -244,7 +244,7 @@ def sign_up():
         sql_insert = "INSERT INTO `mtr_shop`.`users` (`username`, `password`, `phone`, `address`) VALUES (%s,%s,%s,%s);"
         cursor.execute(sql_insert , (username, password, phone, address))
         conn.commit()
-    
+        return redirect('/log-in')
     
     return render_template('users/sign_up.html', namepage = config.name_page_sign_up)
 
