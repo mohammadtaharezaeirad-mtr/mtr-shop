@@ -241,6 +241,7 @@ def sign_up():
         
         conn = connection_db()
         cursor = conn.cursor()
+        
         sql_insert = "INSERT INTO `mtr_shop`.`users` (`username`, `password`, `phone`, `address`) VALUES (%s,%s,%s,%s);"
         cursor.execute(sql_insert , (username, password, phone, address))
         conn.commit()
@@ -248,9 +249,20 @@ def sign_up():
     
     return render_template('users/sign_up.html', namepage = config.name_page_sign_up)
 
-@app.route('/log-in')
+@app.route('/log-in' , methods = ['POST' , 'GET'])
 def login():
-
+    if request.method == 'POST':
+        username = request.form.get('username_user')
+        password = request.form.get('password_user')
+        # password = int(password)
+        conn = connection_db()
+        cursor = conn.cursor()
+        
+        sql_result = 'SELECT * FROM mtr_shop.users where username = %s and password = %s;'
+        cursor.execute(sql_result , (username , password))
+        one_user = cursor.fetchone()
+        if one_user == None:
+            return render_template('users/login.html' , error = 'نام کاربری یا پسورد یا درست وارد کند' , namepage = config.name_page_login)
     return render_template('users/login.html', namepage = config.name_page_login)
 
 if __name__ == "__main__":
