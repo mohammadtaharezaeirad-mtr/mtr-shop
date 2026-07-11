@@ -52,13 +52,39 @@ def users():
     conn.commit()
 # ___________________end database users___________________ #
 
-        
-        
+def cart():
+    conn = pymysql.connect(
+    host="127.0.0.1",
+    user="root",
+    password="root",
+    )
+    cursor = conn.cursor()
+    cursor.execute("CREATE TABLE IF NOT EXISTS `mtr_shop`.`cart` (\
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,\
+  `user_id` INT UNSIGNED NOT NULL,\
+  `product_id` INT NOT NULL,\
+  `quantity` INT NOT NULL,\
+  PRIMARY KEY (`id`),\
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,\
+  UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC) VISIBLE,\
+  UNIQUE INDEX `product_id_UNIQUE` (`product_id` ASC) VISIBLE,\
+  CONSTRAINT `id user`\
+    FOREIGN KEY (`user_id`)\
+    REFERENCES `mtr_shop`.`users` (`id`)\
+    ON DELETE CASCADE\
+    ON UPDATE CASCADE,\
+  CONSTRAINT `id product`\
+    FOREIGN KEY (`product_id`)\
+    REFERENCES `mtr_shop`.`products` (`id`)\
+    ON DELETE CASCADE\
+    ON UPDATE CASCADE);")
+
         
         
 #__ create database__ # 
 products()
 users()
+cart()
 #__ create database__ #   
 
 
