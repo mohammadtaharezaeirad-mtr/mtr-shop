@@ -230,6 +230,10 @@ def delete_products(id):
 # ______________________________________________✔✔start code users✔✔______________________________________________ #
 
 
+
+
+
+# ___________________start route /sign-up or page sign up user___________________ #
 @app.route('/sign-up' , methods = ["GET" , "POST"])
 def sign_up():
 
@@ -248,13 +252,16 @@ def sign_up():
         return redirect('/log-in')
     
     return render_template('users/sign_up.html', namepage = config.name_page_sign_up)
+# ___________________end route /sign-up or page sign up user___________________ #
 
+
+
+# ___________________start route /log-in or page log in user___________________ #
 @app.route('/log-in' , methods = ['POST' , 'GET'])
 def login():
     if request.method == 'POST':
         username = request.form.get('username_user')
         password = request.form.get('password_user')
-        # password = int(password)
         conn = connection_db()
         cursor = conn.cursor()
         
@@ -264,6 +271,9 @@ def login():
         if one_user == None:
             return render_template('users/login.html' , error = 'نام کاربری یا پسورد یا درست وارد کند' , namepage = config.name_page_login)
     return render_template('users/login.html', namepage = config.name_page_login)
+# ___________________end route /log-in or page log in user___________________ #
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
