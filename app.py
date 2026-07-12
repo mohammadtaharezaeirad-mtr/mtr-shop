@@ -52,6 +52,7 @@ def users():
     conn.commit()
 # ___________________end database users___________________ #
 
+# ___________________start database cart___________________ #
 def cart():
     conn = pymysql.connect(
     host="127.0.0.1",
@@ -78,7 +79,7 @@ def cart():
     REFERENCES `mtr_shop`.`products` (`id`)\
     ON DELETE CASCADE\
     ON UPDATE CASCADE);")
-
+# ___________________end database cart___________________ #
         
         
 #__ create database__ # 
