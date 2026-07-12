@@ -301,6 +301,7 @@ def login():
     return render_template('users/login.html', namepage = config.name_page_login)
 # ___________________end route /log-in or page log in user___________________ #
 
+# ___________________start route /product/cart or page log in cart___________________ #
 @app.route('/product/cart' , methods = ['POST' , 'GET'])
 def cart():
     conn = connection_db()
@@ -326,6 +327,6 @@ def cart():
     allUser_product = cursor.fetchall()
     print(allUser_product)
     return render_template('cart_user.html' , allUser_product = allUser_product)
-
+# ___________________end route /product/cart or page log in cart___________________ #
 if __name__ == "__main__":
     app.run(debug=True)
