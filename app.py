@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, redirect, abort
+from flask import Flask, render_template, request, session, redirect, abort , url_for
 import config
 import pymysql
 import os
@@ -117,14 +117,14 @@ def home():
 
 
 # ___________________start route /products/... or page products___________________ #
-@app.route("/products/<int:id>/<name>")
+@app.route("/products/<int:id>/<name>" , methods = ['POST' , 'GET'])
 def products(id, name):
     conn = connection_db()
     cursor = conn.cursor()
     sql_insert = "SELECT * FROM mtr_shop.products WHERE id = %s and name = %s;"
     cursor.execute(sql_insert,(id , name))
     one_products = cursor.fetchone()
-    return render_template('view_products.html' , one_products = one_products)
+    return render_template('view_products.html' , one_products = one_products ,namepage = config.name_page_view_products)
 
 
 
@@ -297,11 +297,25 @@ def login():
         if one_user == None:
             return render_template('users/login.html' , error = 'نام کاربری یا پسورد یا درست وارد کند' , namepage = config.name_page_login)
         session["user_id"] = one_user[0]
-        print(session.get('user_id'))
     return render_template('users/login.html', namepage = config.name_page_login)
 # ___________________end route /log-in or page log in user___________________ #
 
+@app.route('/product/cart' , methods = ['POST' , 'GET'])
+def cart():
 
+    if request.method == 'POST':
+        product_id = request.form.get('product')
+        quantity = request.form.get('quantity')
+        user_id = session.get('user_id')
+        if user_id == None:
+            return redirect('/log-in')
+        conn = connection_db()
+        cursor = conn.cursor()
+        sql_insert = 'INSERT INTO `mtr_shop`.`cart` (`user_id`, `product_id` , `quantity`) VALUES (%s , %s , %s);'
+        cursor.execute(sql_insert , (user_id , product_id , quantity))
+        conn.commit()
+        return render_template('cart_user.html')
+    return render_template('cart_user.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
