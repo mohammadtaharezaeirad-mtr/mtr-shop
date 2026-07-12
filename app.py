@@ -66,7 +66,7 @@ def cart():
   `quantity` INT NOT NULL,\
   PRIMARY KEY (`id`),\
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,\
-  UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC) VISIBLE,\
+  INDEX `user_id_UNIQUE` (`user_id` ASC) VISIBLE,\
   UNIQUE INDEX `product_id_UNIQUE` (`product_id` ASC) VISIBLE,\
   CONSTRAINT `id user`\
     FOREIGN KEY (`user_id`)\
@@ -95,7 +95,8 @@ def connection_db():
         return pymysql.connect(
         host="127.0.0.1",
         user="root",
-        password="root"
+        password="root",
+        database='mtr_shop'
         )
 
 # ______________________________________________✔✔start code admin✔✔______________________________________________ #
@@ -302,20 +303,29 @@ def login():
 
 @app.route('/product/cart' , methods = ['POST' , 'GET'])
 def cart():
-
+    conn = connection_db()
+    cursor = conn.cursor()
+    user_id = session.get('user_id')
     if request.method == 'POST':
         product_id = request.form.get('product')
         quantity = request.form.get('quantity')
-        user_id = session.get('user_id')
         if user_id == None:
             return redirect('/log-in')
-        conn = connection_db()
-        cursor = conn.cursor()
         sql_insert = 'INSERT INTO `mtr_shop`.`cart` (`user_id`, `product_id` , `quantity`) VALUES (%s , %s , %s);'
         cursor.execute(sql_insert , (user_id , product_id , quantity))
         conn.commit()
         return render_template('cart_user.html')
-    return render_template('cart_user.html')
+    sql_result = """
+        SELECT p.*
+        FROM cart
+        JOIN products p ON cart.product_id = p.id
+        WHERE cart.user_id = %s;
+    """
+    cursor.execute(sql_result,(user_id))
+    conn.commit()
+    allUser_product = cursor.fetchall()
+    print(allUser_product)
+    return render_template('cart_user.html' , allUser_product = allUser_product)
 
 if __name__ == "__main__":
     app.run(debug=True)
