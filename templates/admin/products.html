@@ -7,8 +7,7 @@
 </head>
 <body>
     <!------------------=== start form peoducts ===------------------>
-    <form action="{{admin_products
-    }}" method="post" enctype="multipart/form-data">
+    <form action="{{admin_products}}" method="post" enctype="multipart/form-data">
         <label for="">نام محصول</label> <br>
         <input type="text" name="name" placeholder="نام محصول"> <br>
 
@@ -19,9 +18,17 @@
         <textarea name="description"  placeholder="توضیح محصول"> </textarea> <br>
 
         <label for="">موجودی محصول</label> <br>
+        <input type="number" name="quantity"> <br>
+
+        <label for="">وضعیت محصول</label> <br>
         <input type="checkbox" name="active"> <br>
+
+
         <label for="">افزودن تصویر</label> <br>
         <input type="file" name="image" accept=".jpg,.png,.jpe,.svgz,.apng" id=""> <br> <br>
+
+
+
         <button type="submit">تایید</button>
     </form>
 
@@ -37,7 +44,8 @@
             <th>نام محصول</th>
             <th>قیمت محصول</th>
             <th>توضیحات محصول</th>
-            <th>فعال</th>
+            <th>وضعیت محصول</th>
+            <th>تعداد موجود</th>
             <th>ویرایش</th>
             <th>حذف</th>
             <th>تصویر محصول</th>
@@ -48,6 +56,7 @@
         <td>{{i[2]}}</td>
         <td>{{i[3]}}</td>
         <td>{{'فعال' if i[4] == 'on' else 'غیرفعال'}}</td>
+        <td>{{i[5]}}</td>
         <td><a href="/admin/dashboard/edit-products/{{i[0]}}">ویرایش</a></td>
         <td><a href="/admin/dashboard/delete-products/{{i[0]}}">پاک کردن</a></td>
         <td><img src="/static/imagesProducts/{{i[0]}}.jpg" alt="ff"></td>

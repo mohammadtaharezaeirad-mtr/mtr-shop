@@ -26,6 +26,7 @@ def products():
   `prce` INT NULL,\
   `description` TEXT NULL,\
   `active` VARCHAR(5) NULL,\
+  `quantity` INT UNSIGNED NULL,\
   PRIMARY KEY (`id`),\
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);")
     conn.commit()
@@ -176,11 +177,12 @@ def admin_products():
         prce  = request.form.get('prce')
         description  = request.form.get('description')
         active  = request.form.get('active')
+        quantity  = request.form.get('quantity')
         image = request.files.get('image')
         if active == None:
             active = 'off'
-        sql_insert = "INSERT INTO `mtr_shop`.`products` (`name`, `prce`, `description`, `active`) VALUES (%s, %s, %s, %s);"
-        cursor.execute(sql_insert , (name  , prce , description , active))
+        sql_insert = "INSERT INTO `mtr_shop`.`products` (`name`, `prce`, `description`, `active` , `quantity`) VALUES (%s, %s, %s, %s,%s);"
+        cursor.execute(sql_insert , (name  , prce , description , active , quantity))
         conn.commit()
         product_id = cursor.lastrowid
         image.save(f'./static/imagesProducts/{product_id}.jpg')
@@ -212,11 +214,12 @@ def edit_products(id):
         prce = request.form.get('prce')
         description = request.form.get('description')
         active = request.form.get('active')
+        quantity = request.form.get('quantity')
         image = request.files.get('image')
         if active == None:
             active = 'off'
-        sql_update = "UPDATE `mtr_shop`.`products` SET `name` = %s ,`prce` = %s , `description` = %s , `active` = %s WHERE (`id` = %s );"
-        cursor.execute(sql_update,(name,prce,description,active,id)) 
+        sql_update = "UPDATE `mtr_shop`.`products` SET `name` = %s ,`prce` = %s , `description` = %s , `active` = %s , `quantity` = %s WHERE (`id` = %s );"
+        cursor.execute(sql_update,(name,prce,description,active,quantity,id)) 
         conn.commit()
         if image and image.filename != '':
             image.save(f'./static/imagesProducts/{one_products[0]}.jpg')
@@ -329,5 +332,6 @@ def cart():
     print(allUser_product)
     return render_template('cart_user.html' , allUser_product = allUser_product)
 # ___________________end route /product/cart or page log in cart___________________ #
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -9,11 +9,12 @@
     <p>{{one_products[1]}}</p>
     <p>{{one_products[2]}}</p>
     <p>{{one_products[3]}}</p>
+    
     <img src="/static/imagesProducts/{{one_products[0]}}.jpg" alt="image product">
     <form action="{{ url_for('cart') }}" method="post">
         <input type="hidden" name="product" value="{{one_products[0]}}">
         <input type="button" value="-">
-        <input type="number" name="quantity" id="" value="1" min="1">
+        <input type="number" name="quantity" id="" value="1" min="1" max="{{one_products[5]}}">
         <input type="button" value="+">
         <button type="submit">افزودن به سبد خرید</button>
     </form>
