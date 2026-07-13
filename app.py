@@ -118,6 +118,9 @@ def home():
 
 # ___________________end route home or page home___________________ #
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 # ___________________start route /products/... or page products___________________ #
 @app.route("/products/<int:id>/<name>" , methods = ['POST' , 'GET'])
@@ -319,7 +322,6 @@ def cart():
         sql_insert = 'INSERT INTO `mtr_shop`.`cart` (`user_id`, `product_id` , `quantity`) VALUES (%s , %s , %s);'
         cursor.execute(sql_insert , (user_id , product_id , quantity))
         conn.commit()
-        return render_template('cart_user.html')
     sql_result = """
         SELECT p.*
         FROM cart
