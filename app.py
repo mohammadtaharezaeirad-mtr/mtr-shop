@@ -120,7 +120,7 @@ def home():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('/admin/about.html')
 
 # ___________________start route /products/... or page products___________________ #
 @app.route("/products/<int:id>/<name>" , methods = ['POST' , 'GET'])
