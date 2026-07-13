@@ -5,14 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static' , filename = './css/reset.css')}}">
     <link rel="stylesheet" href="{{url_for('static' , filename = './css/home.css')}}">
+    <link rel="stylesheet" href="{{url_for('static' , filename = './font/fontawesome/css/all.css')}}">
     <title>{{namepage}}</title>
 </head>
 <body>
+    <header>
+    <a href=""><img src="../static/image/mtr shop image.png" alt="lego"></a>
+    <form action="">
+        <input type="text">
+    </form>
+    <a href="/product/cart"><i class="fa fa-shopping-cart"></i></a>
+
     <a href="/log-in">وارد شوید</a>
     <a href="/sign-up">ثبت نام</a>
     <a href="/about">درباره من</a>
-
-
+    </header>
 <!------------------=== start list view products ===------------------>
     <ul>
         {%for p in all_products%}
