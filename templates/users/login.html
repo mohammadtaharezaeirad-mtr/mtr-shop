@@ -7,14 +7,14 @@
 </head>
 <body>
     <!--------------------__=== start form login users ===__-------------------->
-    {%if error%}
-        <p>{{error}}</p>
-    {%endif%}
     <form action="{{login}}" method="post">
         <label for="">نام کاربری</label><br>
         <input type="text" name="username_user" id=""><br>
         <label for="">پسورد</label><br>
         <input type="password" name="password_user" id=""><br>
+    {%if error%}
+        <p>{{error}}</p>
+    {%endif%}
         <button type="submit">ورود</button>
     </form>
     <!--------------------__=== end form login users ===__-------------------->
