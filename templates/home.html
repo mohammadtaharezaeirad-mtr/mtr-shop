@@ -9,17 +9,43 @@
     <title>{{namepage}}</title>
 </head>
 <body>
-    <header>
-    <a href=""><img src="../static/image/mtr shop image.png" alt="lego"></a>
-    <form action="">
-        <input type="text">
-    </form>
-    <a href="/product/cart"><i class="fa fa-shopping-cart"></i></a>
 
-    <a href="/log-in">وارد شوید</a>
-    <a href="/sign-up">ثبت نام</a>
-    <a href="/about">درباره من</a>
+
+
+<!------------------=== start header ===------------------>
+    <header id="header">
+        <ul id="right_header">
+            <li>
+                <a href=""><img src="../static/image/mtr shop image.png" id="header_lego" alt="lego"></a>
+            </li>
+            <li>
+                <form action="">
+                    <input type="text" id="search_products" placeholder="اسم محصول را وارد کنید">
+                </form>
+            </li>
+        </ul>
+        
+        <ul id="left_header">
+
+            <li>
+                <a href="/log-in" class = "about_login_sign-up"> وارد </a>
+            </li>
+            
+            <li>
+                <a href="/sign-up" class = "about_login_sign-up"> ثبت نام </a>
+            </li>
+
+            <li>
+                <a href="/about" class = "about_login_sign-up"> درباره من </a>
+            </li>          
+        </ul>
     </header>
+<!------------------=== end header ===------------------>
+
+
+
+
+
 <!------------------=== start list view products ===------------------>
     <ul>
         {%for p in all_products%}
