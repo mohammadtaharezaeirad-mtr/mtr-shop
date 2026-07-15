@@ -14,7 +14,7 @@
     top: 0;
     z-index: 1000;
 }
-#header_lego{
+#header_logo{
     width: 250px;
     height: 100px;
 }
@@ -47,3 +47,34 @@
     color: rgb(8, 173, 214);
 }
 /*********************** end header ***********************/
+
+
+/*********************** start slider ***********************/
+#image_slider{
+    position: relative;
+    width: 1150px;
+    height: 430px;
+    border: none;
+    box-shadow: 0px 0px 10px 3px rgb(161, 250, 241);
+    margin: 0 auto;
+    margin-top: 15%;
+    border-radius:10px ;
+    overflow: hidden;
+}
+#main_slider{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s all ease;
+    
+}
+.img_slider{
+    min-width: 100%; 
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+
+/*********************** end slider ***********************/
