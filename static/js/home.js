@@ -23,18 +23,30 @@ const main_products = document.querySelector('#main_products')
 const btn_right_view = document.querySelector('#btn_right_view')
 const btn_left_view = document.querySelector('#btn_left_view')
 
-let trans_btn_right_left = 10
+let number_main_products = main_products.children.length + 1  
+
+let number_main_products1 = main_products.children.length + 1
+
+
+
+let trans_btn_right_left = 0
 btn_right_view.addEventListener('click', () => {
-    if(trans_btn_right_left != 100){
-    trans_btn_right_left += 10
+    if(number_main_products < number_main_products1){
+    number_main_products += 1
+    trans_btn_right_left -= 15
     main_products.style.transform = `translateX(${trans_btn_right_left}%)`
     }
+
 })
 
+
+
 btn_left_view.addEventListener('click' , () => {
-    if(trans_btn_right_left  != -100){
-    trans_btn_right_left -= 10
+    if(number_main_products != 6){
+    number_main_products -= 1
+    trans_btn_right_left += 15
     main_products.style.transform = `translateX(${trans_btn_right_left}%)`
     }
+
 })
 //end main products
