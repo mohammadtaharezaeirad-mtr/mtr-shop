@@ -56,20 +56,24 @@
 <!------------------=== end Slider ===------------------>
 
 
-
 <!------------------=== start list view products ===------------------>
-    <ul>
-        {%for p in all_products%}
-            <li>
-                <a href="/products/{{p[0]}}/{{p[1]}}">
-                    <img src="/static/imagesProducts/{{p[0]}}.jpg" alt="">
-                    <p>{{p[1]}}</p>
-                    <span>{{p[2]}}</span>
-                </a>
-                
-            </li>
-        {%endfor%}
+    <h2 id="h2_products"><a href="">تمامی محصولات <i class="fa fa-angle-double-left"></i></a></h2>
+    <ul id="ul_products">     
+        <div id="main_products">
+            {%for p in all_products%}
+                <li class="product_information">
+                    <a href="/products/{{p[0]}}/{{p[1]}}">
+                        <img src="/static/imagesProducts/{{p[0]}}.jpg" alt="" class="image_products">
+                        <p class="name_products">{{p[1]}}</p>
+                        <span class="prce_products">{{p[2]}}</span>
+                    </a>
+                </li>
+            {%endfor%}
+        </div>
+        <button id="btn_right_view"><i class="fa fa-chevron-right fa-2x"></i></button>
+        <button id="btn_left_view"><i class="fa fa-chevron-left fa-2x"></i></button>
     </ul>
+
 <!------------------=== start list view products ===------------------>
 <script src="../static/js/home.js"></script>
 </body>

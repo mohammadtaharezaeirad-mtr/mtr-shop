@@ -1,5 +1,4 @@
 /*********************** start header ***********************/
-
 #header{
     display: flex;
     background-color: rgb(193, 219, 219);
@@ -49,10 +48,14 @@
 /*********************** end header ***********************/
 
 
+
+
+
+
 /*********************** start slider ***********************/
 #image_slider{
     position: relative;
-    width: 1500px;
+    width: 76%;
     height: 500px;
     border: none;
     box-shadow: 0px 0px 10px 3px rgb(161, 250, 241);
@@ -74,7 +77,93 @@
     object-fit: cover;
     border-radius: 10px;
 }
-
-
-
 /*********************** end slider ***********************/
+
+
+
+
+
+
+/*********************** start view products ***********************/
+#h2_products{
+    width: 76%;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 10%;
+    padding: 10px;
+}
+
+
+#ul_products{
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 76%;
+    height: auto;
+    margin: 0 auto;
+    overflow: hidden;
+    padding:10px;
+    
+}
+
+
+#main_products{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+    transition: all ease 1s;
+    
+
+}
+#btn_left_view , #btn_right_view{
+    position: absolute;
+    border: none;
+    background: none;
+    
+    
+}
+#btn_right_view{
+    right: 10px;
+}
+#btn_left_view{
+    left: 10px;
+}
+.fa-chevron-left , .fa-chevron-right{
+    transition: all ease 0.4s;
+}
+.fa-chevron-left:hover{
+    text-shadow:  1px 1px 10px rgb(0, 255, 0);
+}
+.fa-chevron-right:hover{
+    text-shadow:  0px 0px 10px rgb(0, 255, 0);
+}
+/*********************** end view products ***********************/
+
+
+
+
+/*********************** start product information ***********************/
+.product_information{
+    display: flex;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    border: none;
+    align-items: center;
+    
+    box-shadow: 0px 0px 10px 3px rgb(161, 250, 241);
+    border-radius: 10px;
+}
+.image_products{
+    width: 200px;
+    height: 200px;
+    border-radius: 7px;
+}
+.name_products , .prce_products{
+    margin: 5px;
+    color: rgb(80, 72, 72);
+}
+
+
+/*********************** end product information ***********************/
