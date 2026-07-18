@@ -1,3 +1,4 @@
+// start slider
 const slider = document.querySelector('#main_slider')
 
 let trans = 0
@@ -15,3 +16,4 @@ setInterval(() => {
 
 
 },4000)
+//end slider
