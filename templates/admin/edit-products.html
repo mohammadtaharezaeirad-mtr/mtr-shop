@@ -23,8 +23,15 @@
         <label for="">موجودی محصول</label> <br>
         <input type="number" name="quantity" value="{{one_products[5]}}"> <br>
 
+        <label for="">گارانتی محصول</label> <br>
+        <input type="number" name="quantity" value="{{one_products[7]}}"> <br>
+
         <label for="">وضعیت محصول</label> <br>
         <input type="checkbox" name="active" {% if one_products[4] == 'on' %} checked {% endif %}> <br>
+
+        <label for="">ارسال سریع</label> <br>
+        <input type="checkbox" name="active" {% if one_products[6] == 'on' %} checked {% endif %}> <br>
+
 
         <input type="file" name="image" id=""> <br>
 

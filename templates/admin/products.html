@@ -20,9 +20,14 @@
         <label for="">موجودی محصول</label> <br>
         <input type="number" name="quantity"> <br>
 
+        <label for="">مهلت گارانتی</label> <br>
+        <input type="number" name="warranty"> <br>
+
         <label for="">وضعیت محصول</label> <br>
         <input type="checkbox" name="active"> <br>
 
+        <label for="">ارسال سریع</label> <br>
+        <input type="checkbox" name="products_fast"> <br>
 
         <label for="">افزودن تصویر</label> <br>
         <input type="file" name="image" accept=".jpg,.png,.jpe,.svgz,.apng" id=""> <br> <br>
@@ -46,9 +51,12 @@
             <th>توضیحات محصول</th>
             <th>وضعیت محصول</th>
             <th>تعداد موجود</th>
+            <th>ارسال سریع</th>
+            <th>گارانتی کالا</th>
             <th>ویرایش</th>
             <th>حذف</th>
             <th>تصویر محصول</th>
+
         </tr>
     {%for i in all_products%}
     <tr>
@@ -57,6 +65,8 @@
         <td>{{i[3]}}</td>
         <td>{{'فعال' if i[4] == 'on' else 'غیرفعال'}}</td>
         <td>{{i[5]}}</td>
+        <td>{{'فعال' if i[6] == 'on' else 'غیرفعال'}}</td>
+        <td>{{i[7]}}</td>
         <td><a href="/admin/dashboard/edit-products/{{i[0]}}">ویرایش</a></td>
         <td><a href="/admin/dashboard/delete-products/{{i[0]}}">پاک کردن</a></td>
         <td><img src="/static/imagesProducts/{{i[0]}}.jpg" alt="ff"></td>

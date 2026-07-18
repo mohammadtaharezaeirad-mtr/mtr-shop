@@ -27,6 +27,8 @@ def products():
   `description` TEXT NULL,\
   `active` VARCHAR(5) NULL,\
   `quantity` INT UNSIGNED NULL,\
+  `products_fast` VARCHAR(5) NULL,\
+  `warranty` INT NULL,\
   PRIMARY KEY (`id`),\
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);")
     conn.commit()
@@ -181,11 +183,15 @@ def admin_products():
         description  = request.form.get('description')
         active  = request.form.get('active')
         quantity  = request.form.get('quantity')
+        warranty  = request.form.get('warranty')
+        products_fast = request.form.get('products_fast')
         image = request.files.get('image')
         if active == None:
             active = 'off'
-        sql_insert = "INSERT INTO `mtr_shop`.`products` (`name`, `prce`, `description`, `active` , `quantity`) VALUES (%s, %s, %s, %s,%s);"
-        cursor.execute(sql_insert , (name  , prce , description , active , quantity))
+        if products_fast == None:
+            products_fast = 'off'
+        sql_insert = "INSERT INTO `mtr_shop`.`products` (`name`, `prce`, `description`, `active` , `quantity` , `warranty` , `products_fast`) VALUES (%s, %s, %s, %s,%s,%s,%s);"
+        cursor.execute(sql_insert , (name  , prce , description , active , quantity,warranty,products_fast))
         conn.commit()
         product_id = cursor.lastrowid
         image.save(f'./static/imagesProducts/{product_id}.jpg')
