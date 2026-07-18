@@ -224,11 +224,15 @@ def edit_products(id):
         description = request.form.get('description')
         active = request.form.get('active')
         quantity = request.form.get('quantity')
+        warranty  = request.form.get('warranty')
+        products_fast = request.form.get('products_fast')
         image = request.files.get('image')
         if active == None:
             active = 'off'
-        sql_update = "UPDATE `mtr_shop`.`products` SET `name` = %s ,`prce` = %s , `description` = %s , `active` = %s , `quantity` = %s WHERE (`id` = %s );"
-        cursor.execute(sql_update,(name,prce,description,active,quantity,id)) 
+        if products_fast == None:
+            products_fast = 'off'
+        sql_update = "UPDATE `mtr_shop`.`products` SET `name` = %s ,`prce` = %s , `description` = %s , `active` = %s , `quantity` = %s , `warranty` = %s , `products_fast` = %s WHERE (`id` = %s );"
+        cursor.execute(sql_update,(name,prce,description,active,quantity,warranty,products_fast,id)) 
         conn.commit()
         if image and image.filename != '':
             image.save(f'./static/imagesProducts/{one_products[0]}.jpg')
