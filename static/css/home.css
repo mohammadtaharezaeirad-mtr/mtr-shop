@@ -85,14 +85,22 @@
 
 
 /*********************** start view products ***********************/
-#h2_products{
+#div_h2_products{
+    display: block;
     width: 76%;
     height: auto;
     margin: 0 auto;
     margin-top: 10%;
     padding: 10px;
 }
+#h2_products{
+    display: inline;
+    transition: all ease 0.4s;
+}
 
+#h2_products:hover{
+    color: rgb(151, 165, 178);
+}
 
 #ul_products{
     display: flex;
