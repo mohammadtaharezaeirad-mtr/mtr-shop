@@ -66,7 +66,10 @@
                 <li class="product_information">
                     <a href="/products/{{p[0]}}/{{p[1]}}">
                         <img src="/static/imagesProducts/{{p[0]}}.jpg" alt="" class="image_products">
-                        <p class="name_products">{{p[1]}}</p>
+                        <span class="name_products">{{p[1]}}</span>
+                        {%if p[6] != 'off'%}
+                            <span class="products_fast">{{'ارسال سریع' if p[6] == 'on'}}</span>
+                        {%endif%}
                         <span class="prce_products">{{p[2]}}</span>
                     </a>
                 </li>
