@@ -38,19 +38,40 @@
         </ul>
     </header>
 <!------------------=== end header ===------------------>
-    <p>{{one_products[1]}}</p>
-    <p>{{one_products[2]}}</p>
-    <p>{{one_products[3]}}</p>
-    <p>{{'ارسال سریع' if one_products[6] == 'on'}}</p>
-    <p>{{one_products[7]}}</p>
-    <img src="/static/imagesProducts/{{one_products[0]}}.jpg" alt="image product">
-    <form action="{{ url_for('cart') }}" method="post">
-        <input type="hidden" name="product" value="{{one_products[0]}}">
-        <input type="button" value="-">
-        <input type="number" name="quantity" id="" value="1" min="1" max="{{one_products[5]}}">
-        <input type="button" value="+">
-        <button type="submit">افزودن به سبد خرید</button>
-    </form>
+
+
+
+
+<!------------------=== start view products ===------------------>
+    <div id="view_products">
+        <div id="name_image_products">
+            <div>
+                <p class="name_products">{{one_products[1]}}</p>
+                <div class="fast_warranty_products">
+                        {%if one_products[6] != 'off'%}
+                            <p class="fast_products">{{'ارسال سریع' if one_products[6] == 'on'}}</p>
+                        {%endif%}
+
+                    <p class="warranty_products">{{one_products[7]}} ماه گارانتی</p>
+                </div>
+            </div>
+            <img src="/static/imagesProducts/{{one_products[0]}}.jpg" alt="image product" class="image_products">
+        </div>
+            <p>{{one_products[3]}}</p>
+    </div>
+    <div id="submit">
+        <p class="prce_products">قیمت: تومان  {{one_products[2]}}</p>
+        <form action="{{ url_for('cart') }}" method="post" id="form_cart">
+            <input type="hidden" name="product" value="{{one_products[0]}}">
+            <input type="button" value="-" class="quantity">
+            <input type="number" name="quantity" id="" value="1" min="1" max="{{one_products[5]}}" class="main_quantity">
+            <input type="button" value="+" class="quantity">
+           <button type="submit" id="submit_quantity">افزودن به سبد خرید</button>
+        </form>
+    </div>
+<!------------------=== end view products ===------------------>
+
+
 
 </body>
 </html>

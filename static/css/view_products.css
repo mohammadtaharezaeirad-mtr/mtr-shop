@@ -59,3 +59,152 @@
     color: rgb(8, 173, 214);
 }
 /*********************** end header ***********************/
+/*********************** start view products ***********************/
+#view_products{
+    display: block;
+    width: 76%;
+    height: 900px;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin-top: 200px;
+    padding: 20px;
+}
+#name_image_products{
+    display: flex;
+    height: auto;
+    justify-content:space-around;
+    gap: 140px;
+}
+#submit{
+    display: flex;
+    height: 95px;
+    background-color: rgb(193, 219, 219);
+    align-items: center;
+    justify-content: center;
+    border: none;
+    gap: 70%;
+    border-radius: 10px 10px 0px 0px; 
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.image_products{
+    width: 400px;
+    height: 300px;
+    border: 3px solid rgb(0, 244, 179);
+    padding: 5px;
+    border-radius: 10px;
+    transition: all ease 0.4s;
+}
+.image_products:hover{
+    padding: 0px;
+    border: none;
+    box-shadow: 0px 0px 10px 3px rgb(0, 244, 179);
+}
+.name_products{
+    font-size: 35px;
+    width: 400px;
+    height: auto;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgb(161, 250, 241);
+    box-shadow: 0px 0px 10px 3px rgb(161, 250, 241);
+    transition: all ease 0.4s;
+    word-wrap: break-word;
+}
+.name_products:hover{
+    box-shadow: 0px 0px 10px 3px rgb(255, 255, 255);
+}
+.fast_warranty_products{
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+    margin-top: 20px;
+}
+.fast_products{
+    width: 120px;
+    height: auto;
+    padding: 5px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    color: rgb(48, 65, 65);
+    background-color: rgb(103, 136, 255);
+}
+.warranty_products{
+    width: 120px;
+    height: auto;
+    padding: 5px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    color: rgb(48, 65, 65);
+    background-color: rgb(252, 255, 103);
+}
+.prce_products{
+    border-radius: 10px;
+    padding: 10px;
+    transition: all ease 0.5s;
+    animation: move infinite alternate 2s linear;
+}
+@keyframes move{
+    0% {
+        box-shadow: 0 -5px 0 0 rgb(111, 255, 231);
+    }
+    25% {
+        box-shadow: 5px 0 0 0 rgb(111, 255, 231); 
+    }
+    50% {
+        box-shadow: 0 5px 0 0 rgb(111, 255, 231); 
+    }
+    75% {
+        box-shadow: -5px 0 0 0 rgb(111, 255, 231); 
+    }
+    100% {
+        box-shadow: 0 -5px 0 0 rgb(111, 255, 231); 
+    }
+}
+.quantity{
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    background-color: azure;
+    transition: all ease 0.4s;
+
+}
+.main_quantity{
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+    font-size: 18px;
+    border-radius: 5px;
+    border:none;
+    background-color: azure;
+}
+#submit_quantity{
+    width: 140px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    border:none;
+    background-color: azure;
+    transition: all ease 0.4s; 
+}
+#form_cart{
+    display: flex;
+    gap: 10px;
+}
+.quantity:hover{
+    background-color: rgb(210, 230, 230);
+}
+#submit_quantity:hover{
+    background-color: rgb(210, 230, 230);
+}
+/*********************** end view products ***********************/
