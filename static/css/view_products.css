@@ -63,12 +63,13 @@
 #view_products{
     display: block;
     width: 76%;
-    height: 900px;
+    height: auto;
     margin: 0 auto;
-    border: 1px solid black;
+    border: none;
     border-radius: 15px;
     margin-top: 200px;
-    padding: 20px;
+    padding: 50px 20px;
+    background-color: rgb(193, 219, 219);
 }
 #name_image_products{
     display: flex;
@@ -89,6 +90,36 @@
     bottom: 0;
     left: 0;
     right: 0;
+}
+#submit_quantity{
+    width: 140px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    border:none;
+    background-color: azure;
+    transition: all ease 0.4s; 
+}
+#form_cart{
+    display: flex;
+    gap: 10px;
+}
+#description_products{
+    display: flex;
+    width: 400px;
+    height: auto;
+    margin-right:119.7975px ;
+    border: none;
+    background-color: rgb(161, 250, 241);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 3px rgb(161, 250, 241);
+    transition: all ease 0.4s;
+}
+#submit_quantity:hover{
+    background-color: rgb(210, 230, 230);
+}
+#description_products:hover{
+    box-shadow: 0px 0px 10px 3px white;
 }
 .image_products{
     width: 400px;
@@ -188,23 +219,9 @@
     border:none;
     background-color: azure;
 }
-#submit_quantity{
-    width: 140px;
-    height: 30px;
-    padding: 5px;
-    border-radius: 5px;
-    border:none;
-    background-color: azure;
-    transition: all ease 0.4s; 
-}
-#form_cart{
-    display: flex;
-    gap: 10px;
-}
+
 .quantity:hover{
     background-color: rgb(210, 230, 230);
 }
-#submit_quantity:hover{
-    background-color: rgb(210, 230, 230);
-}
+
 /*********************** end view products ***********************/

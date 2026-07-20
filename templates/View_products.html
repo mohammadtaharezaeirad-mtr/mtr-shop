@@ -57,21 +57,25 @@
             </div>
             <img src="/static/imagesProducts/{{one_products[0]}}.jpg" alt="image product" class="image_products">
         </div>
-            <p>{{one_products[3]}}</p>
+
+        <div id="description_products">
+            <p class="main_description_products">{{one_products[3]}}</p>
+        </div>
+
     </div>
     <div id="submit">
         <p class="prce_products">قیمت: تومان  {{one_products[2]}}</p>
         <form action="{{ url_for('cart') }}" method="post" id="form_cart">
             <input type="hidden" name="product" value="{{one_products[0]}}">
-            <input type="button" value="-" class="quantity">
-            <input type="number" name="quantity" id="" value="1" min="1" max="{{one_products[5]}}" class="main_quantity">
-            <input type="button" value="+" class="quantity">
+            <input type="button" value="-" class="quantity quantity_remove">
+            <input type="number" name="quantity" value="1" min="1" max="{{one_products[5]}}" class="main_quantity">
+            <input type="button" value="+" class="quantity quantity_add">
            <button type="submit" id="submit_quantity">افزودن به سبد خرید</button>
         </form>
     </div>
 <!------------------=== end view products ===------------------>
 
 
-
+<script src="{{url_for('static' , filename = './js/view_products.js')}}"></script>
 </body>
 </html>
