@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static' , filename = './css/reset.css')}}">
+    <link rel="stylesheet" href="{{url_for('static' , filename = './css/view_products.css')}}">
     <title>{{namepage}}</title>
 </head>
 <body>
     <p>{{one_products[1]}}</p>
     <p>{{one_products[2]}}</p>
     <p>{{one_products[3]}}</p>
-    
+    <p>{{'ارسال سریع' if one_products[6] == 'on'}}</p>
+    <p>{{one_products[7]}}</p>
     <img src="/static/imagesProducts/{{one_products[0]}}.jpg" alt="image product">
     <form action="{{ url_for('cart') }}" method="post">
         <input type="hidden" name="product" value="{{one_products[0]}}">
