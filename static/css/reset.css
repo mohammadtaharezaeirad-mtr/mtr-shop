@@ -16,6 +16,9 @@ body{
 button, input , textarea ,select{
     font-family: "IRANSans";
 }
+button{
+    cursor: pointer;
+}
 a{
     text-decoration: none;
     color: inherit;
