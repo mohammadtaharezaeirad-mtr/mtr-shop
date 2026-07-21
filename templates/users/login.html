@@ -10,16 +10,18 @@
 </head>
 <body>
     <!--------------------__=== start form login users ===__-------------------->
-    <form action="{{login}}" method="post">
-        <label for="">نام کاربری</label><br>
-        <input type="text" name="username_user" id=""><br>
-        <label for="">پسورد</label><br>
-        <input type="password" name="password_user" id=""><br>
-    {%if error%}
-        <p>{{error}}</p>
-    {%endif%}
-        <button type="submit">ورود</button>
-    </form>
+    <div id="form_login">
+        <form action="{{login}}" method="post" id="main_form_login">
+            <h2>ورود</h2>
+            <input type="text" name="username_user" id="username" placeholder="نام کاربری">
+            <input type="password" name="password_user" id="password" placeholder="پسورد">
+        {%if error%}
+            <p class="error">{{error}}</p>
+        {%endif%}
+            <button type="submit" id="login">ورود</button>
+            <a href="/sign-up" class="sign_up">ثبت نام</a>
+        </form>
+    </div>
     <!--------------------__=== end form login users ===__-------------------->
 </body>
 </html>
