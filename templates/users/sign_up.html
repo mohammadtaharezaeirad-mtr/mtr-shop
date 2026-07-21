@@ -10,21 +10,21 @@
 </head>
 <body>
     <!--------------------__=== start form sign up user ===__-------------------->
-    <form action="{{sign_up}}"  method="post">
-        <label for="text">نام کاربری</label><br>
-        <input type="" name="username" id=""><br>
+    <div id="form_login">
+        <form action="{{sign_up}}"  method="post" id="main_form_sign_up">
+            <input type="" name="username" id="username" placeholder="نام کاربری">
+    
+            <input type="password" name="password" id="password" placeholder="پسورد">
+    
+            <input type="text" name="phone" id="phone" placeholder="شماره تلفن">
+    
+            <input type="text" name="address" id="address" placeholder="آدرس">
+            
+            <button type="submit" id="sign_up">تایید</button>
 
-        <label for="">پسورد</label><br>
-        <input type="password" name="password" id=""><br>
-
-        <label for="">شماره تلفن</label><br>
-        <input type="text" name="phone" id=""><br>
-
-        <label for="">آدرس</label><br>
-        <input type="text" name="address" id=""><br>
-        
-        <button type="submit">تایید</button>
-    </form>
+            <a href="" class="login">ورود</a>
+        </form>
+    </div>
     <!--------------------__=== end form sign up user ===__-------------------->
 </body>
 </html>
