@@ -115,7 +115,12 @@ def home():
     sql_insert = "SELECT * FROM mtr_shop.products WHERE active = 'on';"
     cursor.execute(sql_insert)
     all_products = cursor.fetchall()
-    return render_template("home.html" , namepage = config.name_page_home , all_products = all_products)
+    user_id = session.get('user_id')
+    if user_id == None:
+        login = False
+    else:
+        login = 'true'
+    return render_template("home.html" , namepage = config.name_page_home , all_products = all_products , login = login)
 
 
 # ___________________end route home or page home___________________ #
@@ -344,6 +349,11 @@ def cart():
     allUser_product = cursor.fetchall()
     return render_template('cart_user.html' , allUser_product = allUser_product)
 # ___________________end route /product/cart or page log in cart___________________ #
+
+# ___________________start route /user/pro or page log in cart___________________ #
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

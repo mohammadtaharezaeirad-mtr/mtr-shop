@@ -26,18 +26,26 @@
         </ul>
         
         <ul id="left_header">
+            {%if login == False %}
+                <li>
+                    <a href="/log-in" class = "about_login_sign-up"><span> <i class="fa fa-sign-in-alt"></i> وارد یا ثبت نام</span></a>
+                </li>
+            {%endif%}
 
-            <li>
-                <a href="/log-in" class = "about_login_sign-up"><span> <i class="fa fa-sign-in-alt"></i> وارد یا ثبت نام</span></a>
-            </li>
-
+            
+            {%if login == 'true'%}
+                <li>
+                    <a href="/log-in" class = "about_login_sign-up"><span> <i class="fa fa-user-circle"></i> پروفایل </span></a>
+                </li>
+            {%endif%}
             <li>
                 <a href="/about" class = "about_login_sign-up"><span> <i class="fa fa-user"></i> درباره من </span></a>
-            </li>          
+            </li>
 
             <li>
                 <a href="/product/cart" class="header_cart"><i class="fa fa-shopping-cart fa-2x"></i></a>
             </li>
+
         </ul>
     </header>
 <!------------------=== end header ===------------------>
