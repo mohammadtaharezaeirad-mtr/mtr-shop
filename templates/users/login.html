@@ -9,6 +9,36 @@
     <title>{{namepage}}</title>
 </head>
 <body>
+
+    <!------------------=== start header ===------------------>
+    <header id="header">
+        <ul id="right_header">
+            <li>
+                <a href=""><img src="{{url_for('static' , filename = './image logo/mtr_shop_image.png')}}" id="header_logo" alt="logo"></a>
+            </li>
+            <li>
+                <form action="">
+                    <input type="text" id="search_products" placeholder="اسم محصول را وارد کنید">
+                </form>
+            </li>
+        </ul>
+        
+        <ul id="left_header">
+
+            <li>
+                <a href="/" class = "about_home"><span> <i class="fa fa-home"></i> صفحه اصلی </span></a>
+            </li>
+
+            <li>
+                <a href="/about" class = "about_home"><span> <i class="fa fa-user"></i> درباره من </span></a>
+            </li>          
+
+        </ul>
+    </header>
+<!------------------=== end header ===------------------>
+
+
+
     <!--------------------__=== start form login users ===__-------------------->
     <div id="form_login">
         <form action="{{login}}" method="post" id="main_form_login">

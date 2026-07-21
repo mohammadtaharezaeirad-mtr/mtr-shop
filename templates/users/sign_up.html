@@ -9,7 +9,38 @@
     <title>{{namepage}}</title>
 </head>
 <body>
-    <!--------------------__=== start form sign up user ===__-------------------->
+
+<!------------------=== start header ===------------------>
+    <header id="header">
+        <ul id="right_header">
+            <li>
+                <a href=""><img src="{{url_for('static' , filename = './image logo/mtr_shop_image.png')}}" id="header_logo" alt="logo"></a>
+            </li>
+            <li>
+                <form action="">
+                    <input type="text" id="search_products" placeholder="اسم محصول را وارد کنید">
+                </form>
+            </li>
+        </ul>
+        
+        <ul id="left_header">
+
+            <li>
+                <a href="/" class = "about_home"><span> <i class="fa fa-home"></i> صفحه اصلی </span></a>
+            </li>
+
+            <li>
+                <a href="/about" class = "about_home"><span> <i class="fa fa-user"></i> درباره من </span></a>
+            </li>          
+
+        </ul>
+    </header>
+<!------------------=== end header ===------------------>
+
+
+
+
+<!--------------------__=== start form sign up user ===__-------------------->
     <div id="form_login">
         <form action="{{sign_up}}"  method="post" id="main_form_sign_up">
             <input type="" name="username" id="username" placeholder="نام کاربری">
@@ -25,6 +56,6 @@
             <a href="" class="login">ورود</a>
         </form>
     </div>
-    <!--------------------__=== end form sign up user ===__-------------------->
+<!--------------------__=== end form sign up user ===__-------------------->
 </body>
 </html>

@@ -1,3 +1,51 @@
+/*********************** start header ***********************/
+#header{
+    display: flex;
+    background-color: rgb(168, 212, 227);
+    border-radius: 0px 0px 30px 30px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px 200px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+#header_logo{
+    width: 250px;
+    height: 100px;
+}
+#left_header , #right_header{
+    display: flex;
+    gap: 75px;
+    align-items: center;
+}
+#right_header{
+    gap: 100px;
+}
+
+#search_products{
+    width: 340px;
+    height: 30px;
+    background-color: rgb(155, 197, 193);
+    color: rgb(78, 84, 84);
+    border: none;
+    border-radius: 8px 18px;
+    padding: 5px 10px;
+    transition: 0.5s all ease;
+}
+#search_products:hover{
+    border-radius: 18px 8px;
+}
+.about_home{
+    transition: all 0.5s ease;
+}
+.about_home:hover{
+    color: rgb(36, 104, 206);
+}
+/*********************** end header ***********************/
 body{
     background-color:rgb(134 176 219);
 }
