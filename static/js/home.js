@@ -50,3 +50,14 @@ btn_left_view.addEventListener('click' , () => {
 
 })
 //end main products
+
+
+//start name products number of letters
+let name_products = document.querySelectorAll('.name_products')
+
+name_products.forEach((p) => {
+    if(p.innerText.length >= 16){
+        p.textContent = p.innerText.slice(0,16) + '...'
+    }
+})
+//end name products number of letters

@@ -195,8 +195,9 @@
 }
  
 .products_fast{
+    display: block;
     color: rgb(48, 65, 65);
-    width: auto;
+    width: 100px;
     height: auto;
     padding: 3px;
     margin: 10px;
