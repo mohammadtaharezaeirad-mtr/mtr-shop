@@ -324,11 +324,11 @@ def cart():
     conn = connection_db()
     cursor = conn.cursor()
     user_id = session.get('user_id')
+    if user_id == None:
+        return redirect('/log-in')
     if request.method == 'POST':
         product_id = request.form.get('product')
         quantity = request.form.get('quantity')
-        if user_id == None:
-            return redirect('/log-in')
         sql_insert = 'INSERT INTO `mtr_shop`.`cart` (`user_id`, `product_id` , `quantity`) VALUES (%s , %s , %s);'
         cursor.execute(sql_insert , (user_id , product_id , quantity))
         conn.commit()
