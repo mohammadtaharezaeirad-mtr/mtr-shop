@@ -1,3 +1,4 @@
+// start add and remove quantity
 let quantity_add = document.querySelector('.quantity_add')
 let quantity_remove = document.querySelector('.quantity_remove')
 let main_quantity =  document.querySelector('.main_quantity')
@@ -20,3 +21,4 @@ quantity_remove.addEventListener('click' , () => {
         main_quantity.value = value_quantity_remove
     }
 })
+// end add and remove quantity
