@@ -64,7 +64,7 @@
 
     </div>
     <div id="submit">
-        <p class="prce_products">قیمت: تومان  {{one_products[2]}}</p>
+        <p class="prce_products">قیمت: تومان  <span class="main_prce_products">{{one_products[2]}} </span></p>
         <form action="{{ url_for('cart') }}" method="post" id="form_cart">
             <input type="hidden" name="product" value="{{one_products[0]}}">
             <input type="button" value="-" class="quantity quantity_remove">
