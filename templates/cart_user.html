@@ -13,7 +13,7 @@
     <header id="header">
         <ul id="right_header">
             <li>
-                <a href=""><img src="{{url_for('static' , filename = './image logo/mtr_shop_image.png')}}" id="header_logo" alt="logo"></a>
+                <a href="/"><img src="{{url_for('static' , filename = './image logo/mtr_shop_image.png')}}" id="header_logo" alt="logo"></a>
             </li>
             <li>
                 <form action="">
@@ -36,12 +36,13 @@
                 </li>
             {%endif%}
             <li>
+                <a href="/" class = "about_home"><span> <i class="fa fa-home"></i> صفحه اصلی </span></a>
+            </li>
+            
+            <li>
                 <a href="/about" class = "about_login_sign-up"><span> <i class="fa fa-user"></i> درباره من </span></a>
             </li>
 
-            <li>
-                <a href="/product/cart" class="header_cart"><i class="fa fa-shopping-cart fa-2x"></i></a>
-            </li>
 
         </ul>
     </header>
