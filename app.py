@@ -352,7 +352,7 @@ def cart():
     cursor.execute(sql_result,(user_id))
     conn.commit()
     allUser_product = cursor.fetchall()
-    return render_template('cart_user.html' , allUser_product = allUser_product)
+    return render_template('cart_user.html' , allUser_product = allUser_product , namepage = config.name_page_cart_user)
 # ___________________end route /product/cart or page log in cart___________________ #
 
 # ___________________start route /user/profile or page in profile___________________ #

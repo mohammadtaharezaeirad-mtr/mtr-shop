@@ -7,6 +7,7 @@ SECRET_KEY = 'fskdfjalkjf;lajfoefjal;jdflasjf;joeifsjj;weojf;jweofj;oj;oajjlkjf;
 #_____start name pages home_____#
 name_page_home = 'home'
 name_page_view_products = 'view_products'
+name_page_cart_user = 'cart_user'
 #_____ name pages home_____#
 
 #_____start name pages admin_____#
