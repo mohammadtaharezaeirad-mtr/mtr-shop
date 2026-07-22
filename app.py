@@ -324,6 +324,7 @@ def login():
         one_user = cursor.fetchone()
         if one_user == None:
             return render_template('users/login.html' , error = 'نام کاربری یا پسورد یا درست وارد کند' , namepage = config.name_page_login)
+        session.permanent = True
         session["user_id"] = one_user[0]
         return redirect('/')
     return render_template('users/login.html', namepage = config.name_page_login)
