@@ -1,0 +1,61 @@
+/*********************** start header ***********************/
+#header{
+    display: flex;
+    background-color: rgb(193, 219, 219);
+    border-radius: 0px 0px 30px 30px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px 200px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+#header_logo{
+    width: 250px;
+    height: 100px;
+}
+#left_header , #right_header{
+    display: flex;
+    gap: 75px;
+    align-items: center;
+}
+#right_header{
+    gap: 100px;
+}
+
+#search_products{
+    width: 340px;
+    height: 30px;
+    background-color: rgb(161, 250, 241);
+    color: rgb(78, 84, 84);
+    border: none;
+    border-radius: 8px 18px;
+    padding: 5px 10px;
+    transition: 0.5s all ease;
+}
+#search_products:hover{
+    border-radius: 18px 8px;
+}
+.about_login_sign-up{
+    transition: all 0.5s ease;
+}
+.about_login_sign-up:hover{
+    color: rgb(8, 173, 214);
+}
+.header_cart{
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: auto;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    transition: all ease 0.3s;
+}
+.header_cart:hover{
+    color: rgb(8, 173, 214);
+}
+/*********************** end header ***********************/
