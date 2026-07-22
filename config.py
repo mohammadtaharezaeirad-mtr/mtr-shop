@@ -19,4 +19,5 @@ name_page_editproducts = 'edit_products'
 #_____start name pages users_____#
 name_page_sign_up = 'sign_up'
 name_page_login = 'login'
+name_page_profile_user = 'profile'
 #_____end name pages users_____#

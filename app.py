@@ -132,12 +132,17 @@ def about():
 # ___________________start route /products/... or page products___________________ #
 @app.route("/products/<int:id>/<name>" , methods = ['POST' , 'GET'])
 def products(id, name):
+    user_id = session.get('user_id')
+    if user_id == None:
+        login = False
+    else:
+        login = 'true'
     conn = connection_db()
     cursor = conn.cursor()
     sql_insert = "SELECT * FROM mtr_shop.products WHERE id = %s and name = %s;"
     cursor.execute(sql_insert,(id , name))
     one_products = cursor.fetchone()
-    return render_template('view_products.html' , one_products = one_products ,namepage = config.name_page_view_products)
+    return render_template('view_products.html' , one_products = one_products ,namepage = config.name_page_view_products , login = login)
 
 
 
@@ -350,8 +355,10 @@ def cart():
     return render_template('cart_user.html' , allUser_product = allUser_product)
 # ___________________end route /product/cart or page log in cart___________________ #
 
-# ___________________start route /user/pro or page log in cart___________________ #
-
+# ___________________start route /user/profile or page in profile___________________ #
+@app.route('/user/profile')
+def profile_user():
+    return render_template('/users/profile_user.html' , namepage = config.name_page_profile_user)
 
 
 
