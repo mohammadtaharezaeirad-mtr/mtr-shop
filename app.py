@@ -350,7 +350,7 @@ def cart():
         cart.quantity
     FROM cart
     JOIN products p ON cart.product_id = p.id
-    WHERE cart.user_id = 1;
+    WHERE cart.user_id = %s;
     """
     cursor.execute(sql_result,(user_id))
     conn.commit()
