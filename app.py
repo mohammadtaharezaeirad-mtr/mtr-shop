@@ -345,10 +345,12 @@ def cart():
         cursor.execute(sql_insert , (user_id , product_id , quantity))
         conn.commit()
     sql_result = """
-        SELECT p.*
-        FROM cart
-        JOIN products p ON cart.product_id = p.id
-        WHERE cart.user_id = %s;
+    SELECT
+        p.*,
+        cart.quantity
+    FROM cart
+    JOIN products p ON cart.product_id = p.id
+    WHERE cart.user_id = 1;
     """
     cursor.execute(sql_result,(user_id))
     conn.commit()
