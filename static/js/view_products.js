@@ -15,7 +15,7 @@ quantity_add.addEventListener('click' , () => {
     if(main_quantity.value != main_quantity.max){
         main_quantity.value = value_quantity_add
         main_prce_products_number += main_prce_products1
-        main_prce_products.textContent = main_prce_products_number
+        main_prce_products.textContent = main_prce_products_number.toLocaleString()
 
     }
 })
@@ -27,7 +27,16 @@ quantity_remove.addEventListener('click' , () => {
     if(value_quantity_remove != quantity_remove.min){
         main_quantity.value = value_quantity_remove
         main_prce_products_number -= main_prce_products1
-        main_prce_products.textContent = main_prce_products_number
+        main_prce_products.textContent = main_prce_products_number.toLocaleString()
     }
 })
 // end add and remove quantity
+
+
+//start separating three by three product prices
+
+let prce_products_number = Number(main_prce_products.innerText)
+main_prce_products.textContent = prce_products_number.toLocaleString()
+
+
+//end separating three by three product prices 

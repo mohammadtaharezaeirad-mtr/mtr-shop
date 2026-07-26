@@ -61,3 +61,14 @@ name_products.forEach((p) => {
     }
 })
 //end name products number of letters
+
+
+//start separating three by three product prices
+let prce_products = document.querySelectorAll('.prce_products')
+
+prce_products.forEach((p) => {
+    let prce_products_number = Number(p.innerText)
+    p.textContent = prce_products_number.toLocaleString()
+})
+
+//end separating three by three product prices 
