@@ -38,7 +38,7 @@
             <li>
                 <a href="/" class = "about_home"><span> <i class="fa fa-home"></i> صفحه اصلی </span></a>
             </li>
-            
+
             <li>
                 <a href="/about" class = "about_login_sign-up"><span> <i class="fa fa-user"></i> درباره من </span></a>
             </li>
@@ -48,20 +48,43 @@
     </header>
 <!------------------=== end header ===------------------>
 
-    
-    <ul>
-        {%for p in allUser_product%}
-            <li>
-                <a href="/products/{{p[0]}}/{{p[1]}}">
-                    <img src="/static/imagesProducts/{{p[0]}}.jpg" alt="">
-                    <p>{{p[1]}}</p>
-                    <span>{{p[2]}}</span>
-                    
-                </a>
-                
-            </li>
-        {%endfor%}
-    </ul>
 
+
+
+<!------------------=== start user product ===------------------>
+
+    <div id="user_product">
+        <ul id="main_user_product">
+            {%for p in allUser_product%}
+                <li class="li_products">
+                    <a href="/products/{{p[0]}}/{{p[1]}}" class="main_products">
+                        <div class="div_products">
+                            <p class="name_products">{{p[1]}}</p>
+                            <div class="div_prce_quantity">
+                            {%if p[6] != 'off'%}
+                                <span class="products_fast">{{'ارسال سریع' if p[6] == 'on'}}</span>
+                            {%endif%}
+                                <p class="warranty_products">{{p[7]}} ماه گارانتی</p>
+                            </div>
+                        </div>
+                        <img src="/static/imagesProducts/{{p[0]}}.jpg" alt="" class="image_cart_user">
+                    </a>
+                    <div id="cart_quantity">
+                        <p class="prce_products">قیمت: تومان  <span class="main_prce_products">{{p[2]}} </span></p>
+                        <form action="{{ url_for('cart') }}" method="post" id="form_cart">
+                            <input type="hidden" name="product" value="{{p[0]}}">
+                            <input type="button" value="-" class="quantity quantity_remove">
+                            <input type="number" name="quantity" value="{{p[8]}}" min="1" max="{{p[5]}}" class="main_quantity">
+                            <input type="button" value="+" class="quantity quantity_add">
+                            <button type="submit" id="submit_quantity" style="display: none;"></button>
+                        </form>
+                    </div>
+                    
+                </li>
+            {%endfor%}
+        </ul>
+    </div>
+
+<!------------------=== end user product ===------------------>
 </body>
 </html>

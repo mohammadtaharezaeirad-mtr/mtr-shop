@@ -59,3 +59,120 @@
     color: rgb(8, 173, 214);
 }
 /*********************** end header ***********************/
+
+
+
+
+/*********************** start user product ***********************/
+#user_product{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 76%;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 15%;
+    padding: 5%;
+    align-items: center;
+    border-radius: 10px;
+}
+#main_user_product{
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
+#cart_quantity{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px;
+    gap: 20px;
+}
+#form_cart{
+    display: flex;
+    background-color: #c4c6c6;
+    padding: 10px;
+    border-radius:5px;
+    gap: 10px;
+}
+.image_cart_user{
+    width: 400px;
+    height: 300px;
+    border-radius:10px ;
+}
+.main_products{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    gap: 100px;
+
+}
+.li_products{
+    background-color: rgb(214, 220, 218) ;
+    border-radius: 6px;
+    transition: all ease 0.4s;
+    padding: 10px;
+}
+.li_products:hover{
+    box-shadow: 0 0 5px 1px rgb(66, 68, 67);
+}
+.div_products{
+    width: 400px;
+}
+.name_products{
+    display: block;
+    text-align: center;
+    font-size: 19px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #c4c6c6;
+}
+.div_prce_quantity{
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 5%;
+}
+.products_fast{
+    width: 120px;
+    height: auto;
+    padding: 5px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    color: rgb(48, 65, 65);
+    background-color: rgb(113, 255, 103);
+}
+.warranty_products{
+    width: 120px;
+    height: auto;
+    padding: 5px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    color: rgb(48, 65, 65);
+    background-color: rgb(252, 255, 103);
+}
+.prce_products{
+    font-size: 19px;
+    padding: 5px 15px;
+    background-color: #c4c6c6;
+    border-radius: 5px
+}
+.quantity{
+    width: 30px;
+    height: 30px;
+    font-size: 22px;
+    border: none;
+    border-radius: 10px;
+}
+.main_quantity{
+    width:auto;
+    height: auto;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+}
+/*********************** end user product ***********************/
+
