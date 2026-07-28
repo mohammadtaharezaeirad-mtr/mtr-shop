@@ -356,7 +356,13 @@ def cart():
     cursor.execute(sql_result,(user_id))
     conn.commit()
     allUser_product = cursor.fetchall()
-    return render_template('cart_user.html' , allUser_product = allUser_product , namepage = config.name_page_cart_user)
+    prce_all = 0
+    for prce in allUser_product:
+        quantity_all_prce = int(prce[8])
+        prce = int(prce[2])
+        prce_all += prce*quantity_all_prce
+        print(prce_all)
+    return render_template('cart_user.html' , allUser_product = allUser_product , namepage = config.name_page_cart_user , prce_all = prce_all)
 # ___________________end route /product/cart or page log in cart___________________ #
 
 # ___________________start route /product/cart or page update quantity user in cart___________________ #
