@@ -2,6 +2,7 @@ let quantity_adds = document.querySelectorAll('.quantity_add');
 let quantity_removes = document.querySelectorAll('.quantity_remove');
 let main_quantitys = document.querySelectorAll('.main_quantity');
 let main_prce_products = document.querySelectorAll('.main_prce_products');
+let submit_quantity = document.querySelectorAll('#submit_quantity')
 
 quantity_adds.forEach((quantity_add, index) => {
 
@@ -11,7 +12,7 @@ quantity_adds.forEach((quantity_add, index) => {
     let unitPrice = Number(main_prce_product.textContent.replace(/,/g, ""));
 
     quantity_add.addEventListener("click", () => {
-
+        
         let quantity = Number(main_quantity.value);
 
         if (quantity < Number(main_quantity.max)) {
@@ -22,9 +23,8 @@ quantity_adds.forEach((quantity_add, index) => {
             
             main_prce_product.textContent = (unitPrice * quantity).toLocaleString();
         }
-
+        submit_quantity[index].click()
     });
-
 });
 
 
@@ -47,6 +47,8 @@ quantity_removes.forEach((quantity_remove, index) => {
             main_quantity.value = quantity;
 
             main_prce_product.textContent = (unitPrice * quantity).toLocaleString();
+            
+            submit_quantity[index].click()
         }
 
     });

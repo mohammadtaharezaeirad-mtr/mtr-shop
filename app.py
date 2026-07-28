@@ -362,9 +362,17 @@ def cart():
 # ___________________start route /product/cart or page update quantity user in cart___________________ #
 @app.route('/product/cart-update' , methods = ['POST' , 'GET'])
 def cart_update():
+
+    conn = connection_db()
+    cursor = conn.cursor()
     if request.method == 'POST':
-        product = request.form.get('product')
+        cart_id = request.form.get('cart_id')
         quantity_update = request.form.get('quantity_update')
+        sql_insert = "UPDATE `mtr_shop`.`cart` SET `quantity` = %s WHERE (`id` = %s);"
+        cursor.execute(sql_insert ,(quantity_update,cart_id))
+        conn.commit()
+        return redirect('/product/cart')
+    return redirect('/product/cart')
 # ___________________end route /product/cart or page update quantity user in cart___________________ #
 
 # ___________________start route /user/profile or page in profile___________________ #
