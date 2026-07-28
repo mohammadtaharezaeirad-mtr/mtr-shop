@@ -347,7 +347,8 @@ def cart():
     sql_result = """
     SELECT
         p.*,
-        cart.quantity
+        cart.quantity,
+        cart.id
     FROM cart
     JOIN products p ON cart.product_id = p.id
     WHERE cart.user_id = %s;
