@@ -365,7 +365,7 @@ def cart():
     return render_template('cart_user.html' , allUser_product = allUser_product , namepage = config.name_page_cart_user , prce_all = prce_all)
 # ___________________end route /product/cart or page log in cart___________________ #
 
-# ___________________start route /product/cart or page update quantity user in cart___________________ #
+# ___________________start route /product/cart-update or page update quantity user in cart___________________ #
 @app.route('/product/cart-update' , methods = ['POST' , 'GET'])
 def cart_update():
 
@@ -379,7 +379,7 @@ def cart_update():
         conn.commit()
         return redirect('/product/cart')
     return redirect('/product/cart')
-# ___________________end route /product/cart or page update quantity user in cart___________________ #
+# ___________________end route /product/cart-update or page update quantity user in cart___________________ #
 
 # ___________________start route /user/profile or page in profile___________________ #
 @app.route('/user/profile')
