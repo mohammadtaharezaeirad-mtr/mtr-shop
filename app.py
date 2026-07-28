@@ -368,7 +368,6 @@ def cart():
 # ___________________start route /product/cart-update or page update quantity user in cart___________________ #
 @app.route('/product/cart-update' , methods = ['POST' , 'GET'])
 def cart_update():
-
     conn = connection_db()
     cursor = conn.cursor()
     if request.method == 'POST':
@@ -380,6 +379,28 @@ def cart_update():
         return redirect('/product/cart')
     return redirect('/product/cart')
 # ___________________end route /product/cart-update or page update quantity user in cart___________________ #
+
+
+
+# ___________________start route /product/cart-delete or page delete product in cart user ___________________ #
+@app.route('/product/cart_delete' , methods = ['GET' , 'POST'])
+def cart_delete():
+    conn = connection_db()
+    cursor = conn.cursor()
+    if request.method == 'POST':
+        cart_id_delete = request.form.get('cart_id_delete')
+        sql_insert = 'DELETE FROM `mtr_shop`.`cart` WHERE (`id` = %s );'
+        cursor.execute(sql_insert , (cart_id_delete))
+        conn.commit()
+        return redirect('/product/cart')
+    return redirect('/product/cart')
+
+
+
+# ___________________end route /product/cart-delete or page delete product in cart user ___________________ #
+
+
+
 
 # ___________________start route /user/profile or page in profile___________________ #
 @app.route('/user/profile')
