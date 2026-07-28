@@ -358,6 +358,14 @@ def cart():
     return render_template('cart_user.html' , allUser_product = allUser_product , namepage = config.name_page_cart_user)
 # ___________________end route /product/cart or page log in cart___________________ #
 
+# ___________________start route /product/cart or page update quantity user in cart___________________ #
+@app.route('/product/cart-update' , methods = ['POST' , 'GET'])
+def cart_update():
+    if request.method == 'POST':
+        product = request.form.get('product')
+        quantity_update = request.form.get('quantity_update')
+# ___________________end route /product/cart or page update quantity user in cart___________________ #
+
 # ___________________start route /user/profile or page in profile___________________ #
 @app.route('/user/profile')
 def profile_user():
