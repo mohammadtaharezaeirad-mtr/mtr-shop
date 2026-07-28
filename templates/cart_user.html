@@ -71,10 +71,10 @@
                     </a>
                     <div id="cart_quantity">
                         <p class="prce_products">قیمت: تومان  <span class="main_prce_products">{{p[2]}} </span></p>
-                        <form action="{{ url_for('cart') }}" method="post" id="form_cart">
-                            <input type="hidden" name="product" value="{{p[0]}}">
+                        <form action="{{ url_for('cart_update') }}" method="post" id="form_cart">
+                            <input type="hidden" name="cart_id" value="{{p[9]}}">
                             <input type="button" value="-" class="quantity quantity_remove">
-                            <input type="number" name="quantity" value="{{p[8]}}" min="1" max="{{p[5]}}" class="main_quantity">
+                            <input type="number" name="quantity_update" value="{{p[8]}}" min="1" max="{{p[5]}}" class="main_quantity">
                             <input type="button" value="+" class="quantity quantity_add">
                             <button type="submit" id="submit_quantity" style="display: none;"></button>
                         </form>
