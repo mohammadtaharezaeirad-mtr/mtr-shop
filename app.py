@@ -83,7 +83,9 @@ def cart():
     ON DELETE CASCADE\
     ON UPDATE CASCADE);")
 # ___________________end database cart___________________ #
-        
+
+
+# ___________________start database shipping_status___________________ #      
 def shipping_status():
     conn = pymysql.connect(
     host="127.0.0.1",
@@ -103,6 +105,7 @@ def shipping_status():
     REFERENCES `mtr_shop`.`users` (`id`)\
     ON DELETE NO ACTION\
     ON UPDATE NO ACTION);")
+# ___________________end database shipping_status___________________ #      
 
 
 
