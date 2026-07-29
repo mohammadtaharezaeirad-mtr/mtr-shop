@@ -434,7 +434,7 @@ def cart_delete():
 @app.route('/user/profile')
 def profile_user():
     return render_template('/users/profile_user.html' , namepage = config.name_page_profile_user)
-
+# ___________________end route /user/profile or page in profile___________________ #
 
 
 if __name__ == "__main__":
