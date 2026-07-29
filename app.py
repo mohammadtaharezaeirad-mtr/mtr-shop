@@ -84,11 +84,37 @@ def cart():
     ON UPDATE CASCADE);")
 # ___________________end database cart___________________ #
         
+def shipping_status():
+    conn = pymysql.connect(
+    host="127.0.0.1",
+    user="root",
+    password="root",
+    )
+    cursor = conn.cursor()
+    cursor.execute("CREATE TABLE IF NOT EXISTS `mtr_shop`.`shipping_status` (\
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,\
+  `shipping_status` INT NOT NULL DEFAULT 0,\
+  `user_id` INT UNSIGNED NOT NULL,\
+  PRIMARY KEY (`id`),\
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,\
+  INDEX `status_idx` (`user_id` ASC) VISIBLE,\
+  CONSTRAINT `status`\
+    FOREIGN KEY (`user_id`)\
+    REFERENCES `mtr_shop`.`users` (`id`)\
+    ON DELETE NO ACTION\
+    ON UPDATE NO ACTION);")
+
+
+
+
+
+
         
 #__ create database__ # 
 products()
 users()
 cart()
+shipping_status()
 #__ create database__ #   
 
 
